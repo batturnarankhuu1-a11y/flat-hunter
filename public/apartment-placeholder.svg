@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" fill="none">
+  <rect width="1000" height="700" fill="#e8f1ed"/>
+  <circle cx="500" cy="330" r="170" fill="#d3e7dd"/>
+  <path d="M345 365 500 235l155 130v145H345V365Z" fill="#fff" stroke="#4f8b73" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M465 510V395h70v115M385 385h55v55h-55zM560 385h55v55h-55z" stroke="#4f8b73" stroke-width="14" stroke-linejoin="round"/>
+  <text x="500" y="610" text-anchor="middle" fill="#527265" font-family="Arial,sans-serif" font-size="28">Flat Hunter</text>
+</svg>
