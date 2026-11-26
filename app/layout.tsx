@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Suspense } from 'react'
 import ProButton from '@/components/ProButton'
+import SiteNav from '@/components/SiteNav'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -49,12 +50,14 @@ export default function RootLayout({
             },
           }}
         >
-          <header className="relative z-10 flex h-16 items-center justify-between border-b border-slate-100 bg-white px-5 sm:px-8">
-            <Link href="/" className="flex items-center gap-2.5" aria-label="Flat Hunter нүүр хуудас">
+          <header className="relative z-10 border-b border-slate-100 bg-white">
+            <div className="flex h-16 items-center justify-between gap-4 px-5 sm:px-8">
+            <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Flat Hunter нүүр хуудас">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-700 text-lg font-bold text-white">⌂</span>
               <span className="text-base font-bold tracking-tight text-slate-900">Flat <span className="text-emerald-700">Hunter</span></span>
             </Link>
-            <div className="flex items-center gap-3 text-sm">
+            <div className="hidden min-w-0 flex-1 md:block"><Suspense><SiteNav /></Suspense></div>
+            <div className="flex shrink-0 items-center gap-3 text-sm">
             <Suspense>
               <Show when="signed-out">
                 <SignInButton>
@@ -72,6 +75,8 @@ export default function RootLayout({
               </Show>
             </Suspense>
             </div>
+            </div>
+            <div className="border-t border-slate-100 px-3 py-1.5 md:hidden"><Suspense><SiteNav /></Suspense></div>
           </header>
           {children}
         </ClerkProvider>

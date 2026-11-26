@@ -29,6 +29,9 @@ export const listings = pgTable("listings", {
   rawDescription: text("raw_description"),
   rawPrice: text("raw_price"),
   cleanPrice: integer("clean_price"), // сарын түрээс, төгрөгөөр (₮); null = "тохиролцоно"
+  /** Price before the last change (set when the ad's price changes) → "Үнэ буурсан" when higher than clean_price. */
+  previousPrice: integer("previous_price"),
+  priceChangedAt: timestamp("price_changed_at"),
   dealType: text("deal_type").default("rent"),
   address: text("address"),
   district: text("district"),
@@ -48,6 +51,10 @@ export const savedSearches = pgTable("saved_searches", {
   rooms: integer("rooms"),
   maxPrice: integer("max_price"),
   isPaidAlert: boolean("is_paid_alert").default(false),
+  /** 'daily' (09:00 digest, free) | 'instant' (Pro) | 'off' */
+  alertMode: text("alert_mode").notNull().default("daily"),
+  /** Listings newer than this, and price drops after it, are "new" for this search. */
+  lastCheckedAt: timestamp("last_checked_at").defaultNow(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

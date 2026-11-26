@@ -13,10 +13,10 @@
 /** Every column the app SELECTs, per table (must match db/schema.ts). */
 export const REQUIRED_COLUMNS: Record<string, string[]> = {
   flats: ["id", "district", "khoroo", "complex", "rooms", "area", "address", "deal_type", "lowest_price", "price_per_m2", "badge", "created_at"],
-  listings: ["id", "flat_id", "source_url", "source", "title", "raw_description", "raw_price", "clean_price", "deal_type", "address", "district", "rooms", "area", "image_url", "photo_refs", "status", "created_at"],
+  listings: ["id", "flat_id", "source_url", "source", "title", "raw_description", "raw_price", "clean_price", "previous_price", "price_changed_at", "deal_type", "address", "district", "rooms", "area", "image_url", "photo_refs", "status", "created_at"],
   scrape_runs: ["id", "started_at", "finished_at", "status", "source", "pages_read", "listings_seen", "new_count", "failed_count", "error"],
   parse_errors: ["id", "url", "error_message", "created_at"],
-  saved_searches: ["id", "user_id", "district", "rooms", "max_price", "is_paid_alert", "created_at"],
+  saved_searches: ["id", "user_id", "district", "rooms", "max_price", "is_paid_alert", "alert_mode", "last_checked_at", "created_at"],
   payments: ["id", "invoice_id", "user_id", "plan", "amount", "provider", "status", "created_at", "paid_at"],
   user_plans: ["user_id", "plan", "pro_until", "updated_at"],
 }
@@ -79,6 +79,10 @@ ALTER TABLE listings ADD COLUMN IF NOT EXISTS deal_type text DEFAULT 'rent';
 ALTER TABLE listings ADD COLUMN IF NOT EXISTS address text;
 ALTER TABLE listings ADD COLUMN IF NOT EXISTS photo_refs text;
 ALTER TABLE listings ALTER COLUMN source_url DROP NOT NULL;
+ALTER TABLE listings ADD COLUMN IF NOT EXISTS previous_price integer;
+ALTER TABLE listings ADD COLUMN IF NOT EXISTS price_changed_at timestamp;
+ALTER TABLE saved_searches ADD COLUMN IF NOT EXISTS alert_mode text NOT NULL DEFAULT 'daily';
+ALTER TABLE saved_searches ADD COLUMN IF NOT EXISTS last_checked_at timestamp DEFAULT now();
 `
 
 /**

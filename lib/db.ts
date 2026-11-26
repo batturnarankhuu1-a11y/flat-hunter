@@ -128,6 +128,8 @@ const listingColumns = {
   rawDescription: listings.rawDescription,
   rawPrice: listings.rawPrice,
   cleanPrice: listings.cleanPrice,
+  previousPrice: listings.previousPrice,
+  priceChangedAt: listings.priceChangedAt,
   district: listings.district,
   address: listings.address,
   rooms: listings.rooms,
@@ -190,6 +192,8 @@ export async function getPricedRentListings() {
         rooms: listings.rooms,
         area: listings.area,
         cleanPrice: listings.cleanPrice,
+        previousPrice: listings.previousPrice,
+        priceChangedAt: listings.priceChangedAt,
         createdAt: listings.createdAt,
       })
       .from(listings)
