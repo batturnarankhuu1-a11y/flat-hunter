@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:seed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed-rentals.ts",
+    "db:migrate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/migrate.ts",
+    "scrape": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/scrape-unegui.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.10.4",

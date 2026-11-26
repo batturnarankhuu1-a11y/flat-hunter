@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local scraper fixtures (parsed listings, no photos/names/phones)
+/data/unegui-fixtures/
