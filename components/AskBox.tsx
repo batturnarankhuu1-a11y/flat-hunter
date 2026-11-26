@@ -3,9 +3,10 @@
 import { useState } from "react"
 
 const EXAMPLES = [
-  "Би Баянзүрх дүүрэгт 1.5 саяас доош 2 өрөө байр хайж байна",
-  "Хан-Уулд 3 өрөө, 60 м2-аас дээш, 2.5 сая хүртэл",
-  "2-room flat for rent in Khan-Uul under 2.5 million",
+  "Баянзүрхэд 2 өрөө 1.5 сая хүртэл",
+  "Хан-Уулд тавилгатай 3 өрөө",
+  "River garden",
+  "2-room flat in Khan-Uul under 2.5 million",
 ]
 
 type AskBoxProps = {
@@ -30,7 +31,7 @@ export default function AskBox({ loading, onAsk }: AskBoxProps) {
       aria-label="Ухаалаг хайлт"
     >
       <label htmlFor="ask-input" className="mb-2 flex items-center gap-2 text-xs font-semibold text-emerald-100">
-        <span aria-hidden="true">✦</span> AI хайлт — хүссэн байраа өгүүлбэрээр бичээрэй (Монгол эсвэл English)
+        <span aria-hidden="true">⌕</span> Хайлт — дүүрэг, өрөө, үнэ эсвэл хотхоноо энгийнээр бичээрэй
       </label>
       <div className="flex flex-col gap-2 sm:flex-row">
         <input
@@ -38,7 +39,7 @@ export default function AskBox({ loading, onAsk }: AskBoxProps) {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           maxLength={300}
-          placeholder="Би яг тийм байр хайж байна… (ж: Баянзүрхэд 1.5 саяас доош 2 өрөө)"
+          placeholder="ж: Баянзүрхэд 2 өрөө 1.5 сая хүртэл"
           className="h-12 w-full min-w-0 shrink-0 rounded-xl sm:w-auto sm:flex-1 bg-white px-4 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:ring-4 focus:ring-emerald-300/40"
         />
         <button type="submit" disabled={loading || !query.trim()} className="h-12 shrink-0 rounded-xl bg-emerald-400 px-5 text-sm font-bold text-emerald-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:opacity-60">

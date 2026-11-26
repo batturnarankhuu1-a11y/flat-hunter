@@ -34,6 +34,20 @@ function AnswerText({ text }: { text: string }) {
   )
 }
 
+/** What the search understood, as readable chips: "Хан-Уул", "3 өрөө", "3 сая хүртэл", "“тавилгатай”". */
+function understoodChips(result: AskResponse): string[] {
+  const { filters } = result
+  const chips: string[] = []
+  if (filters.district) chips.push(filters.district)
+  if (filters.rooms !== null) chips.push(`${filters.rooms} өрөө`)
+  if (filters.max_price !== null) chips.push(`${Number((filters.max_price / 1_000_000).toFixed(2))} сая хүртэл`)
+  if (filters.min_area !== null) chips.push(`${filters.min_area} м²+`)
+  if (result.search?.applied) chips.push(...result.search.terms.map((term) => `“${term}”`))
+  return chips
+}
+
+const STATUS_LABEL: Record<AskResponse["status"], string> = { OK: "Олдлоо", NOT_FOUND: "Олдсонгүй", UNCLEAR: "Ойлгосонгүй" }
+
 const STATUS_STYLES: Record<AskResponse["status"], string> = {
   OK: "border-emerald-200 bg-emerald-50 text-emerald-950",
   NOT_FOUND: "border-amber-200 bg-amber-50 text-amber-950",
@@ -112,21 +126,22 @@ export default function FlatBrowser({ flats, loadError }: { flats: Flat[]; loadE
           </div>
         )}
         {askResult && (
-          <section role="status" aria-label="AI хайлтын хариулт" className={`mt-4 rounded-xl border px-4 py-4 text-sm ${STATUS_STYLES[askResult.status]}`}>
+          <section role="status" aria-label="Хайлтын хариулт" className={`mt-4 rounded-xl border px-4 py-4 text-sm ${STATUS_STYLES[askResult.status]}`}>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-semibold">✦ AI хариулт</span>
-              <span className="rounded-md bg-white/80 px-2 py-0.5 font-mono text-[11px] font-semibold shadow-sm">{askResult.status}</span>
+              <span className="font-semibold">Таны хайлт:</span>
+              {understoodChips(askResult).map((chip) => <span key={chip} className="rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-semibold shadow-sm">{chip}</span>)}
+              <span className="rounded-md bg-white/60 px-2 py-0.5 text-[11px] font-semibold">{STATUS_LABEL[askResult.status]}</span>
               <button type="button" onClick={clearAsk} className="ml-auto text-xs font-semibold underline underline-offset-2">Цэвэрлэх</button>
             </div>
             <p className="mt-2 leading-6"><AnswerText text={askResult.answer} /></p>
             <details className="mt-2 text-xs opacity-80">
-              <summary className="cursor-pointer font-semibold">Задалсан шүүлтүүр (JSON)</summary>
+              <summary className="cursor-pointer font-semibold">Шүүлтүүр (JSON)</summary>
               <pre className="mt-1 overflow-x-auto rounded-md bg-white/70 p-2 font-mono text-[11px]">{JSON.stringify(askResult.filters, null, 2)}</pre>
             </details>
           </section>
         )}
         <div className="mb-5 mt-9 flex items-end justify-between gap-4">
-          <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">{showAskResults ? "AI хайлтын үр дүн" : "Танд зориулсан"}</p><h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">Түрээсийн байрууд</h2></div>
+          <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">{showAskResults ? "Хайлтын үр дүн" : "Танд зориулсан"}</p><h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">Түрээсийн байрууд</h2></div>
           <p className="shrink-0 whitespace-nowrap text-sm text-slate-500"><span className="font-semibold text-slate-800">{visibleFlats.length}</span> байр олдлоо</p>
         </div>
         {loadError ? (
