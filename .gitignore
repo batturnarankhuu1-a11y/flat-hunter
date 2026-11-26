@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local scraper fixtures (parsed listings, no photos/names/phones)
 /data/unegui-fixtures/
+
+# raw browser exports contain agent names (spec N3) — keep them out of git
+/data/raw/

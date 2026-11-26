@@ -2,6 +2,7 @@ import type { Flat } from "@/components/types"
 import type { District } from "@/lib/districts"
 import { matchesFilters, parseSearchQuery, type QuestionLanguage, type SearchFilters } from "@/lib/query-parser"
 import { formatMnt } from "@/lib/rent-price"
+import type { SemanticResult } from "@/lib/semantic-search"
 
 /**
  * OK         — at least one listing in the database matches
@@ -21,22 +22,30 @@ export interface AskResponse {
   citedListingIds: number[]
   /** Every matching flat, cheapest first (built only from database rows). */
   flats: Flat[]
+  /** Semantic part of the search: words beyond the filters ("тавилгатай", "River garden") and the engine used. */
+  search: { engine: "pinecone" | "local"; terms: string[]; applied: boolean }
 }
 
+/** Free-text words used as an extra filter (relevance) or, without filters, as the whole search. */
+type Semantic = Pick<SemanticResult, "engine" | "terms" | "scores" | "relevant">
+const NO_SEMANTIC: Semantic = { engine: "local", terms: [], scores: new Map(), relevant: new Set() }
+
 const DISTRICT_EN: Record<District, string> = {
-  "Баянзүрх": "Bayanzurkh", "Сүхбаатар": "Sukhbaatar", "Хан-Уул": "Khan-Uul", "Чингэлтэй": "Chingeltei", "Баянгол": "Bayangol",
+  "Баянзүрх": "Bayanzurkh", "Сүхбаатар": "Sukhbaatar", "Хан-Уул": "Khan-Uul", "Чингэлтэй": "Chingeltei", "Баянгол": "Bayangol", "Сонгинохайрхан": "Songinokhairkhan",
 }
 
 /** Max listings named in the answer; the rest are in `flats`. */
 const MAX_CITED = 3
 
-function criteria(filters: SearchFilters, language: QuestionLanguage): string {
+function criteria(filters: SearchFilters, language: QuestionLanguage, keywords: string[] = []): string {
   const parts: string[] = []
+  const quoted = keywords.length ? `“${keywords.join(" ")}”` : null
   if (language === "mn") {
     if (filters.district) parts.push(`${filters.district} дүүрэгт`)
     if (filters.rooms !== null) parts.push(`${filters.rooms} өрөө`)
     if (filters.min_area !== null) parts.push(`${filters.min_area} м²-аас том`)
     if (filters.max_price !== null) parts.push(`сард ${formatMnt(filters.max_price)}-өөс хэтрэхгүй`)
+    if (quoted) parts.push(`${quoted} хайлтад тохирох`)
     return parts.join(", ")
   }
   parts.push("rental flat(s)")
@@ -44,6 +53,7 @@ function criteria(filters: SearchFilters, language: QuestionLanguage): string {
   if (filters.district) parts.push(`in ${DISTRICT_EN[filters.district]}`)
   if (filters.min_area !== null) parts.push(`of at least ${filters.min_area} m²`)
   if (filters.max_price !== null) parts.push(`up to ${formatMnt(filters.max_price)} a month`)
+  if (quoted) parts.push(`matching ${quoted}`)
   return parts.join(" ")
 }
 
@@ -67,8 +77,12 @@ function badgeSentence(flat: Flat, language: QuestionLanguage): string | null {
 }
 
 /** Compose the answer only from matched database rows (no invented listings). */
-export function composeAnswer(filters: SearchFilters, language: QuestionLanguage, matches: Flat[]): { answer: string; cited: number[] } {
-  const what = criteria(filters, language)
+export function composeAnswer(
+  filters: SearchFilters, language: QuestionLanguage, matches: Flat[],
+  options: { keywords?: string[]; order?: "price" | "relevance" } = {},
+): { answer: string; cited: number[] } {
+  const what = criteria(filters, language, options.keywords)
+  const byRelevance = options.order === "relevance"
   if (matches.length === 0) {
     if (filters.price_type === "sale") {
       return language === "mn"
@@ -85,7 +99,9 @@ export function composeAnswer(filters: SearchFilters, language: QuestionLanguage
   sentences.push(language === "mn"
     ? `${what ? `${what} ` : ""}түрээсийн ${matches.length} байр олдлоо.`.replace(/^./, (c) => c.toUpperCase())
     : `Found ${matches.length} ${what}.`)
-  sentences.push(language === "mn" ? `Хамгийн хямд нь ${describe(cited[0], language)}.` : `The cheapest is ${describe(cited[0], language)}.`)
+  sentences.push(byRelevance
+    ? (language === "mn" ? `Хамгийн сайн тохирох нь ${describe(cited[0], language)}.` : `The best match is ${describe(cited[0], language)}.`)
+    : (language === "mn" ? `Хамгийн хямд нь ${describe(cited[0], language)}.` : `The cheapest is ${describe(cited[0], language)}.`))
   if (cited.length > 1) {
     const others = cited.slice(1).map((flat) => describe(flat, language)).join("; ")
     sentences.push(language === "mn" ? `Дараагийнх нь ${others}.` : `${cited.length > 2 ? "Next are" : "Next is"} ${others}.`)
@@ -98,24 +114,47 @@ export function composeAnswer(filters: SearchFilters, language: QuestionLanguage
   return { answer: sentences.slice(0, 4).join(" "), cited: cited.map((flat) => flat.listingId!) }
 }
 
-/** Full pipeline: question → filter JSON → database matches → grounded answer. */
-export function answerQuestion(question: string, catalogue: Flat[]): AskResponse {
+/**
+ * Full pipeline: question → filter JSON (+ semantic words) → database matches → grounded answer.
+ *
+ *   filters understood, no extra words   → filter matches, cheapest first
+ *   filters + words ("тавилгатай")       → filter matches that are also relevant to the words
+ *                                          (if none are, the words are ignored), cheapest first
+ *   only words ("River garden-д байр")   → relevant flats, best match first
+ *   nothing usable ("Сайн байна уу")     → UNCLEAR
+ */
+export function answerQuestion(question: string, catalogue: Flat[], semantic: Semantic = NO_SEMANTIC): AskResponse {
   const { filters, language, understood } = parseSearchQuery(question)
+  const listed = catalogue.filter((flat) => flat.listingId !== null && flat.price !== null)
+  const relevance = (flat: Flat) => semantic.scores.get(flat.id) ?? 0
+  const search = (applied: boolean) => ({ engine: semantic.engine, terms: semantic.terms, applied })
+
   if (!understood) {
+    const relevant = filters.price_type === "sale" ? [] : listed
+      .filter((flat) => semantic.relevant.has(flat.id))
+      .sort((a, b) => relevance(b) - relevance(a) || a.price! - b.price!)
+    if (relevant.length) {
+      const { answer, cited } = composeAnswer(filters, language, relevant, { keywords: semantic.terms, order: "relevance" })
+      return { status: "OK", language, filters, answer, citedListingIds: cited, flats: relevant, search: search(true) }
+    }
     return {
       status: "UNCLEAR",
       language,
       filters,
       answer: language === "mn"
-        ? "Асуултаас дүүрэг, өрөөний тоо, үнэ эсвэл талбайг танисангүй. Жишээ нь: “Хан-Уулд 2.5 сая хүртэл 3 өрөө байр”."
-        : "I could not find a district, room count, price or size in the question. For example: “3-room flat in Khan-Uul under 2.5 million”.",
+        ? "Асуултаас дүүрэг, өрөөний тоо, үнэ, талбай эсвэл хотхоны нэрийг танисангүй. Жишээ нь: “Хан-Уулд 2.5 сая хүртэл 3 өрөө байр”."
+        : "I could not find a district, room count, price, size or complex name in the question. For example: “3-room flat in Khan-Uul under 2.5 million”.",
       citedListingIds: [],
       flats: [],
+      search: search(false),
     }
   }
-  const matches = catalogue
-    .filter((flat) => flat.listingId !== null && matchesFilters(flat, filters))
-    .sort((a, b) => a.price! - b.price!)
-  const { answer, cited } = composeAnswer(filters, language, matches)
-  return { status: matches.length ? "OK" : "NOT_FOUND", language, filters, answer, citedListingIds: cited, flats: matches }
+
+  let matches = listed.filter((flat) => matchesFilters(flat, filters))
+  const keyed = semantic.terms.length ? matches.filter((flat) => semantic.relevant.has(flat.id)) : []
+  const applied = keyed.length > 0
+  if (applied) matches = keyed
+  matches.sort((a, b) => a.price! - b.price!)
+  const { answer, cited } = composeAnswer(filters, language, matches, { keywords: applied ? semantic.terms : [] })
+  return { status: matches.length ? "OK" : "NOT_FOUND", language, filters, answer, citedListingIds: cited, flats: matches, search: search(applied) }
 }

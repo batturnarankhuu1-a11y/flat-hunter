@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Suspense } from 'react'
+import ProButton from '@/components/ProButton'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -66,6 +67,7 @@ export default function RootLayout({
                 </SignUpButton>
               </Show>
               <Show when="signed-in">
+                <ProButton />
                 <UserButton />
               </Show>
             </Suspense>

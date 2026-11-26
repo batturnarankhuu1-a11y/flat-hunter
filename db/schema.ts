@@ -34,7 +34,7 @@ export const listings = pgTable("listings", {
   district: text("district"),
   rooms: integer("rooms"),
   area: numeric("area"),
-  imageUrl: text("image_url"), // comma separated gallery of OUR photos (public/rentals); null for scraped ads
+  imageUrl: text("image_url"), // comma separated gallery: the ad's own photos, copied to public/flats
   /** SHA-256 prefixes of the original ad's photo URLs — only for duplicate matching (FR-8), never displayed (N1). */
   photoRefs: text("photo_refs"),
   status: text("status").default("active"), // 'active' | 'needs_review' | 'inactive'
@@ -49,6 +49,27 @@ export const savedSearches = pgTable("saved_searches", {
   maxPrice: integer("max_price"),
   isPaidAlert: boolean("is_paid_alert").default(false),
   createdAt: timestamp("created_at").defaultNow(),
+});
+
+/** One Wire.mn invoice for the Pro plan. `demo` invoices are confirmed by the in-app demo button. */
+export const payments = pgTable("payments", {
+  id: serial("id").primaryKey(),
+  invoiceId: text("invoice_id").notNull().unique(),
+  userId: text("user_id").notNull(), // Clerk user ID
+  plan: text("plan").notNull().default("pro"),
+  amount: integer("amount").notNull(), // ₮
+  provider: text("provider").notNull().default("demo"), // 'demo' | 'wire'
+  status: text("status").notNull().default("pending"), // 'pending' | 'paid'
+  createdAt: timestamp("created_at").defaultNow(),
+  paidAt: timestamp("paid_at"),
+});
+
+/** Paid plan per user: Pro until `proUntil` (unlimited saved searches). */
+export const userPlans = pgTable("user_plans", {
+  userId: text("user_id").primaryKey(), // Clerk user ID
+  plan: text("plan").notNull().default("pro"),
+  proUntil: timestamp("pro_until").notNull(),
+  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const parseErrors = pgTable("parse_errors", {

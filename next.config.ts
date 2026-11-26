@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   },
   cacheComponents: true,
   images: {
-    // Scraped listings show their own photos straight from unegui's CDN (URLs only, never stored — spec N1).
+    // Listing photos are served from public/flats (copied by `npm run data:photos`); this pattern is only for ingested ads.
     remotePatterns: [{ protocol: "https", hostname: "*.unegui.mn", pathname: "/media/**" }],
   },
   partialPrefetching: true,

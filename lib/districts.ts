@@ -1,5 +1,5 @@
 /** Canonical Ulaanbaatar district names used across the app. */
-export const DISTRICTS = ["Баянзүрх", "Сүхбаатар", "Хан-Уул", "Чингэлтэй", "Баянгол"] as const
+export const DISTRICTS = ["Баянзүрх", "Сүхбаатар", "Хан-Уул", "Чингэлтэй", "Баянгол", "Сонгинохайрхан"] as const
 export type District = (typeof DISTRICTS)[number]
 
 export const DISTRICT_ABBREVIATIONS: Record<District, string> = {
@@ -8,6 +8,7 @@ export const DISTRICT_ABBREVIATIONS: Record<District, string> = {
   "Хан-Уул": "ХУД",
   "Чингэлтэй": "ЧД",
   "Баянгол": "БГД",
+  "Сонгинохайрхан": "СХД",
 }
 
 // Patterns match the stem so inflected forms work too:
@@ -19,6 +20,7 @@ const DISTRICT_PATTERNS: Array<[District, RegExp]> = [
   ["Хан-Уул", /хан[\s-]*уул|(?<![а-яөү])худ(?![а-яөү])|k?han[\s-]*uul|(?<![a-z])k?hud(?![a-z])/i],
   ["Чингэлтэй", /чингэлтэй|(?<![а-яөү])чгд(?![а-яөү])|(?<![а-яөү])чд(?![а-яөү])|chingelte[ij]|(?<![a-z])chd(?![a-z])/i],
   ["Баянгол", /баянгол|(?<![а-яөү])бгд(?![а-яөү])|bayangol|(?<![a-z])bgd(?![a-z])/i],
+  ["Сонгинохайрхан", /сонгинохайрхан|сонгино|(?<![а-яөү])схд(?![а-яөү])|songino|(?<![a-z])s[kh]?hd(?![a-z])/i],
 ]
 
 /** Every district mentioned in a free-text sentence, in canonical form. */

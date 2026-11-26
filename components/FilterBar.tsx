@@ -1,7 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useState } from "react"
+import Link from "next/link"
 import { DISTRICTS } from "@/lib/districts"
+import ProModal from "./ProModal"
 import type { FlatFilters } from "./types"
 
 type FilterBarProps = {
@@ -12,11 +14,41 @@ type FilterBarProps = {
 const districts = ["ALL", ...DISTRICTS]
 const roomOptions = ["ALL", "1", "2", "3", "4"]
 
+type SaveMessage = { tone: "ok" | "info" | "error"; text: string; signIn?: boolean }
+
 export default function FilterBar({ filters, onChange }: FilterBarProps) {
-  const [saved, setSaved] = useState(false)
+  const [message, setMessage] = useState<SaveMessage | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [proOpen, setProOpen] = useState(false)
+  const closePro = useCallback(() => setProOpen(false), [])
 
   function update(field: keyof FlatFilters, value: string) {
     onChange({ ...filters, [field]: value })
+  }
+
+  /** Save the current filters; the free plan's limit opens the Wire.mn Pro checkout. */
+  async function save() {
+    setSaving(true)
+    setMessage(null)
+    try {
+      const response = await fetch("/api/saved-searches", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(filters),
+      })
+      const data = await response.json()
+      if (response.status === 401) setMessage({ tone: "info", text: data.error, signIn: true })
+      else if (response.status === 402) { setMessage({ tone: "info", text: data.error }); setProOpen(true) }
+      else if (!response.ok) setMessage({ tone: "error", text: data.error ?? "Хайлтыг хадгалж чадсангүй" })
+      else {
+        const usage = data.savedSearchLimit === null ? "Pro: хязгааргүй" : `${data.savedSearches}/${data.savedSearchLimit} үнэгүй`
+        setMessage({ tone: "ok", text: `✓ Хайлтыг хадгаллаа (${usage}). Шинэ зар нэмэгдэхэд танд мэдэгдэнэ.` })
+      }
+    } catch {
+      setMessage({ tone: "error", text: "Сүлжээний алдаа. Дахин оролдоно уу." })
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -52,11 +84,17 @@ export default function FilterBar({ filters, onChange }: FilterBarProps) {
             <span className="whitespace-nowrap text-sm text-slate-400">сая ₮</span>
           </span>
         </label>
-        <button type="button" onClick={() => { setSaved(true); window.setTimeout(() => setSaved(false), 3200) }} className="h-10 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-4 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-100">
-          ♡ <span className="ml-1">Энэ хайлтыг хадгалах</span>
+        <button type="button" onClick={save} disabled={saving} className="h-10 whitespace-nowrap rounded-lg border border-emerald-200 bg-emerald-50 px-4 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-100 disabled:cursor-wait disabled:opacity-60">
+          ♡ <span className="ml-1">{saving ? "Хадгалж байна…" : "Энэ хайлтыг хадгалах"}</span>
         </button>
       </div>
-      {saved && <p role="status" className="mt-4 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">✓ Хайлтыг хадгаллаа. Шинэ зар нэмэгдэхэд танд мэдэгдэнэ.</p>}
+      {message && (
+        <p role="status" className={`mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg px-3 py-2 text-sm ${message.tone === "ok" ? "bg-emerald-50 text-emerald-800" : message.tone === "info" ? "bg-amber-50 text-amber-900" : "bg-rose-50 text-rose-900"}`}>
+          {message.text}
+          {message.signIn && <Link href="/sign-in" className="font-semibold underline underline-offset-2">Нэвтрэх</Link>}
+        </p>
+      )}
+      {proOpen && <ProModal onClose={closePro} onActivated={() => setMessage({ tone: "ok", text: "✓ Pro эрх идэвхжлээ. Одоо хайлтаа дахин хадгална уу — хязгааргүй." })} />}
     </section>
   )
 }

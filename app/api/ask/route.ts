@@ -1,5 +1,6 @@
 import { answerQuestion } from "@/lib/ask"
 import { loadRentalFlats } from "@/lib/flats"
+import { semanticSearch } from "@/lib/semantic-engine"
 
 const MAX_QUERY_LENGTH = 300 // spec FR-14
 
@@ -13,6 +14,10 @@ const MAX_QUERY_LENGTH = 300 // spec FR-14
  *    and every listing it mentions is followed by its id, e.g. [101].
  *
  * status: "OK" | "NOT_FOUND" (no matching listing) | "UNCLEAR" (no filter recognized)
+ *
+ * Words beyond the filters ("тавилгатай", "River garden", "near the center") go to the semantic
+ * search: Pinecone when PINECONE_API_KEY + HUGGINGFACE_API_KEY are set, otherwise the local vector
+ * search (lib/semantic-search.ts). `search.engine` in the response says which one answered.
  */
 export async function POST(request: Request): Promise<Response> {
   let body: unknown
@@ -31,7 +36,8 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
-    return Response.json({ query, ...answerQuestion(query, await loadRentalFlats()) })
+    const flats = await loadRentalFlats()
+    return Response.json({ query, ...answerQuestion(query, flats, await semanticSearch(query, flats)) })
   } catch {
     return Response.json({ error: "Байрны мэдээллийг ачаалж чадсангүй. Дахин оролдоно уу." }, { status: 503 })
   }

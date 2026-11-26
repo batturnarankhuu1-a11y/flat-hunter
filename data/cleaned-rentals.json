@@ -1,0 +1,2892 @@
+{
+  "note": "unegui.mn rent listings from a CSV export, cleaned by scripts/clean-unegui-csv.ts. No agent names or phone numbers (spec N3); photos are the ads' own cdn.unegui.mn URLs.",
+  "exportedAt": "2026-11-26T19:50:05.651Z",
+  "stats": {
+    "rows": 204,
+    "cleanListings": 194,
+    "cleanFlats": 180,
+    "notSelected": {
+      "flats": 92,
+      "listings": 93
+    },
+    "listings": 101,
+    "flats": 88,
+    "flatsWithSeveralAds": 11,
+    "needsReview": 1,
+    "agentLogosRemoved": 0,
+    "dropped": {
+      "өрөөний тоогүй (зогсоол, хаус …)": 2,
+      "орон сууц биш (хажуу өрөө, агуулах …)": 8
+    }
+  },
+  "flats": [
+    {
+      "key": "f001",
+      "district": "Хан-Уул",
+      "place": "Хүннү",
+      "rooms": 3,
+      "area": 78,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10863096_agnista-khotkhon-3-oroo-bair/",
+          "title": "Агниста хотхон 3 өрөө байр 78мкв",
+          "rawPrice": "3.1 сая ₮",
+          "previousRawPrice": "3.3 сая ₮",
+          "cleanPrice": 3100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 3,
+          "area": 78,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/77/ea/77eab40ed2a303843f4bbd50f9e54329.webp"
+          ],
+          "photoRefs": [
+            "7f0fc05851f4e906f58f"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926041_agnista-khotkhon-mastertai-3-oroo-kholsluulne-dulaan-zosool-unegui/",
+          "title": "Агниста хотхон мастертай 3 өрөө 78м2 дулаан зосоолтой",
+          "rawPrice": "3.1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "18-р хороо",
+          "rooms": 3,
+          "area": 78,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/61/f6/61f60c3f9aa5ce82294df79d76aac1ea.webp"
+          ],
+          "photoRefs": [
+            "c3994930cc9ad0cddbc0"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10911428_khunnu2222-khotkhony-khazhuud-agnista-khotkhond-3-oroo-kholsluulne/",
+          "title": "Хүннү2222 хотхоны хажууд агниста хотхонд 3 өрөө",
+          "rawPrice": "3.1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "17-р хороо",
+          "rooms": 3,
+          "area": null,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/66/00/66000a2a374b17a2637b865103c781e6.webp",
+            "https://cdn1.unegui.mn/media/cache1/5e/66/5e660f66459047ba63b44553766f7b37.webp",
+            "https://cdn1.unegui.mn/media/cache1/45/12/45120ab70d161f97e052a4d5b3b08324.webp",
+            "https://cdn1.unegui.mn/media/cache1/0d/b4/0db4b78069b3fb6825f37aceca445b47.webp",
+            "https://cdn1.unegui.mn/media/cache1/4f/53/4f5362f30a3672459789c65fba97fdd1.webp",
+            "https://cdn1.unegui.mn/media/cache1/4a/2a/4a2ab8bd79ec3df8a6736674a0a85f98.webp",
+            "https://cdn1.unegui.mn/media/cache1/00/aa/00aad51e7a95dcb7b31c9e58d3780278.webp",
+            "https://cdn1.unegui.mn/media/cache1/b1/7e/b17e1eaba500089fd60865adee11695c.webp"
+          ],
+          "photoRefs": [
+            "ea04ee833513b0a3cb66",
+            "411a463984ec3c21288a",
+            "023f8975f0a5af92c8e4",
+            "f7761ccab13986437d42",
+            "346ff5316850ea2190cf",
+            "42668b4845b18424a91c",
+            "913cd55bc31d55251be3",
+            "2675fb19690cd343177b"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f002",
+      "district": "Хан-Уул",
+      "place": "River Garden",
+      "rooms": 4,
+      "area": 113.5,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10925795_river-garden2-khotkhond-4-oroo-tureesluulne/",
+          "title": "River garden2 хотхонд 4 өрөө байр 113.5мкв",
+          "rawPrice": "6.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 6500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "River Garden",
+          "rooms": 4,
+          "area": 113.5,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/e7/06/e706eaac48c1a1f985dc835ba838cda7.webp"
+          ],
+          "photoRefs": [
+            "c4e84d6ec6b703155ba9"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10913051_khud-river-garden2-khotkhond-mastertai-4-oroo-113m2-bair/",
+          "title": "Худ river garden2 хотхонд мастертай 4 өрөө 113м2 байр",
+          "rawPrice": "7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 7000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "River Garden",
+          "rooms": 4,
+          "area": 113,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/a3/f3/a3f36c951416bdca98d6ec0f90d34aec.webp"
+          ],
+          "photoRefs": [
+            "e0a7f56ad138aa5a502f"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f003",
+      "district": "Баянзүрх",
+      "place": "Чингис зочид буудал",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10899292_sansaryn-imartyn-urd-central-garden-khotkhond-tavilgatai-shine-mastertai-3-oroo-ba/",
+          "title": "Сансарын имартын урд, central garden хотхонд мастертай 3 өрөө 80мкв",
+          "rawPrice": "3.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Чингис зочид буудал",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/8a/16/8a16abd22863c3ef600de1c95e9cc328.webp"
+          ],
+          "photoRefs": [
+            "2a37b9c83c9a4b34872c"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926961_sansaryn-e-martyn-urd-central-garden-buren-tavilgatai-80m3-3-oroo/",
+          "title": "Сансарын Е-мартын урд Central garden 80мкв 3 өрөө",
+          "rawPrice": "3.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Бөхийн Өргөө",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/5a/67/5a676a94fcf3f1ff89b73d48830bff33.webp"
+          ],
+          "photoRefs": [
+            "0b88a068df823b284243"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f004",
+      "district": "Хан-Уул",
+      "place": "11-р хороо",
+      "rooms": 5,
+      "area": 141,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926689_khudzaisand-amerik-surguuliin-khoino-tushee-gun-khotkhond-141-mkv-5-oroo-tureesluulne/",
+          "title": "Худ зайсанд америк сургуулийн хойно түшээ гүн хотхонд 141 мкв 5 өрөө",
+          "rawPrice": "4.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 4800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "11-р хороо",
+          "rooms": 5,
+          "area": 141,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/cb/7d/cb7d97a2be21f7e125733cf45f2e0adf.webp"
+          ],
+          "photoRefs": [
+            "329250754484281ed62d"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926686_zaisan-tushee-gun-zogsooltoi-5-oroo/",
+          "title": "Зайсан түшээ гүн зогсоолтой 5 өрөө байр 141мкв",
+          "rawPrice": "4.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 4800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Зайсан",
+          "rooms": 5,
+          "area": 141,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/b5/16/b516d3f668a91c753e0f3e542655f691.webp"
+          ],
+          "photoRefs": [
+            "a11e68a4793cb06cc74b"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f005",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 3,
+      "area": 70,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10903021_khan-uul-15-r-khoroo-tsengeldekh-1-khotkhond-70-m2-3-oroo-buren-tavilgatai/",
+          "title": "Хан-уул, 15-р хороо, цэнгэлдэх 1 хотхонд 70 м², 3 өрөө, бүрэн тавилгатай",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 3,
+          "area": 70,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/6d/20/6d20b3f9650fd47c99ad38a4c4d42ab6.webp"
+          ],
+          "photoRefs": [
+            "991adc59b39cfcd15a13"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10888824_tsengeldekh-1-khotkhond-70mkv-3-oroo-buren-tavilgatai-bair/",
+          "title": "Цэнгэлдэх 1 хотхонд 70мкв 3 өрөө бүрэн тавилгатай байр",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "120 мянгат",
+          "rooms": 3,
+          "area": 70,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/67/8b/678b12fd02728dff6b2816cfec5efafc.webp",
+            "https://cdn1.unegui.mn/media/cache1/a7/2e/a72e6fe16d79f7fc346482d27cb5cf77.webp",
+            "https://cdn1.unegui.mn/media/cache1/5e/f1/5ef157d802177177da8a2a85b4c12419.webp",
+            "https://cdn1.unegui.mn/media/cache1/b0/fa/b0faa540b5c77c65c6f918f3b848c3b0.webp",
+            "https://cdn1.unegui.mn/media/cache1/03/e5/03e5e53e5d1de812818f163ffe170f38.webp",
+            "https://cdn1.unegui.mn/media/cache1/0d/44/0d44cf1a375a127fe8e9e39a008dc7e4.webp",
+            "https://cdn1.unegui.mn/media/cache1/75/e1/75e1935a5065d04572914a75d8442917.webp",
+            "https://cdn1.unegui.mn/media/cache1/89/a3/89a304efaade1fc2852caa4950c4e55c.webp"
+          ],
+          "photoRefs": [
+            "b40dfb52b3635793592a",
+            "10234d5deec17b2cc12c",
+            "eb56ec42cbd9a160a77a",
+            "42e6690c1bb3769a84b2",
+            "09b6184a5a643b5e1d6e",
+            "10e2f7b81b8573e63bd6",
+            "b8222469e2a85389f68d",
+            "bce32d6d77f86ed35326"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f006",
+      "district": "Хан-Уул",
+      "place": "Хүннү",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10874723_khunnu-2222-khotkhond-3-oroo-oron-suuts/",
+          "title": "Хүннү 2222 хотхонд 3 өрөө орон сууц 80мкв",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": "3.3 сая ₮",
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/8b/52/8b52fa92ab88cac2b870bfb5d3ff5452.webp"
+          ],
+          "photoRefs": [
+            "6067d2586d7884f41953"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10892857_khunnu22-buren-tavilgatai-grashtai-3oroo-bair/",
+          "title": "Худ хүннү2222 3 өрөө байр 80мкв",
+          "rawPrice": "3.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/d2/00/d200e915e88876b57c68c162c4d121a4.webp"
+          ],
+          "photoRefs": [
+            "077dd58b6f02fe2c5a92"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f007",
+      "district": "Баянзүрх",
+      "place": "13-р хороолол",
+      "rooms": 2,
+      "area": 47,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10908135_ofitseryn-toirgiin-ard-buren-tavilgatai-2-oroo/",
+          "title": "Бзд 13, бөхийн өргөө-н баруун талд 2 өрөө 47мкв",
+          "rawPrice": "1.6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "13-р хороолол",
+          "rooms": 2,
+          "area": 47,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/f9/3d/f93d66ad82509793f8b5661bf8d9b17b.webp"
+          ],
+          "photoRefs": [
+            "44f70f10244ce39d40cb"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10905997_bokhiin-orgoonii-khazhuud-2-oroo-tureesluulene/",
+          "title": "Бөхийн өргөөний хажууд 2 өрөө 47мкв",
+          "rawPrice": "1.6 сая ₮",
+          "previousRawPrice": "1.8 сая ₮",
+          "cleanPrice": 1600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Бөхийн Өргөө",
+          "rooms": 2,
+          "area": 47,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ab/72/ab72a4adc89c9d2416ecce013101914c.webp"
+          ],
+          "photoRefs": [
+            "49db9d4cd6cd1a81cb42"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f008",
+      "district": "Баянгол",
+      "place": "Алтай хотхон",
+      "rooms": 2,
+      "area": 33,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10925833_bgd-altai-khotkhond-2-oroo-bair/",
+          "title": "Бгд алтай хотхонд 2 өрөө 32м2 байр",
+          "rawPrice": "1.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "Алтай хотхон",
+          "rooms": 2,
+          "area": 32,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ac/31/ac318fc6cd4e06036506acb5c944ed25.webp"
+          ],
+          "photoRefs": [
+            "491d07e12b44a7506e1c"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10924920_altai-khotkhon-2-oroo-bair-tureeslene/",
+          "title": "Алтай хотхон 2 өрөө байр 33мкв",
+          "rawPrice": "1.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "Алтай хотхон",
+          "rooms": 2,
+          "area": 33,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/bd/71/bd71b87ca9a55618b72318c2f93b5caf.webp"
+          ],
+          "photoRefs": [
+            "e92c2534cfa98b09b358"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f009",
+      "district": "Баянзүрх",
+      "place": "2-р эмнэлэг",
+      "rooms": 2,
+      "area": 51,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10793269_sansar-imart-urd-tsentral-garden-2-oroo/",
+          "title": "Сансар имарт урд централ гарден 2 өрөө байр 51мкв",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "2-р эмнэлэг",
+          "rooms": 2,
+          "area": 51,
+          "postedAt": "2026-11-23T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/cb/2f/cb2f5caa4679e6428d03dd0eab4ad19f.webp"
+          ],
+          "photoRefs": [
+            "009dc363b1b600be3b76"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10758565_tsentral-garden-khotkhon-2-oroo-bair/",
+          "title": "Централ гарден хотхон 2 өрөө байр 51m2",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Бөхийн Өргөө",
+          "rooms": 2,
+          "area": 51,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/6b/37/6b37a0980b28ac4fc2100f9844c2fd67.webp"
+          ],
+          "photoRefs": [
+            "3444c52986ee8337586b"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f010",
+      "district": "Сүхбаатар",
+      "place": "1-р хороо",
+      "rooms": 2,
+      "area": 106.41,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10871416_shangri-la-zuun-tald-ambassador-reisdence-d-2-oroo/",
+          "title": "Shangri la зүүн талд ambassador reisdence-д 2 өрөө 106мкв",
+          "rawPrice": "6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 6000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 2,
+          "area": 106,
+          "postedAt": "2026-11-23T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/47/4c/474cd15af1dda943827975b3aca63595.webp"
+          ],
+          "photoRefs": [
+            "ffe37a3ab241132b5fd0"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10843416_ambassador-residence-106-41mkv-2-oroo-kholsluulne/",
+          "title": "Ambassador residence 106.41мкв 2 өрөө",
+          "rawPrice": "6 сая ₮",
+          "previousRawPrice": "8.5 сая ₮",
+          "cleanPrice": 6000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 2,
+          "area": 106.41,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/cc/b8/ccb88e437a39a9c9a579da023d58e250.webp"
+          ],
+          "photoRefs": [
+            "f7653875f6e5a1a1c000"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10883954_ambassador-residence-2oroo-tureesluulne/",
+          "title": "Ambassador residence 2 өрөө 106.41мкв",
+          "rawPrice": "6 сая ₮",
+          "previousRawPrice": "7 сая ₮",
+          "cleanPrice": 6000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 2,
+          "area": 106.41,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/7d/28/7d283d50da278487a83c1a736165796d.webp"
+          ],
+          "photoRefs": [
+            "4bcfd4918de5e7b3b0af"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f011",
+      "district": "Хан-Уул",
+      "place": "Хүннү",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926026_khunnu-2222-2-r-eelzh-buren-tavilgatai-2-oroo-bair-tureesluulne/",
+          "title": "Хүннү 2222, 2-р ээлж, бүрэн тавилгатай, 2 өрөө байр",
+          "rawPrice": "2.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 2,
+          "area": null,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/b5/02/b50272e26c9ff946e4d8455989bf0ffc.webp"
+          ],
+          "photoRefs": [
+            "79a05330efff590a0229"
+          ]
+        },
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10925129_khud-khunnu-2222-buren-tavilgatai-2oroo-bair-50mkv/",
+          "title": "ХУД Хүннү 2222 бүрэн тавилгатай 2өрөө байр 50мкв",
+          "rawPrice": "2.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/c2/22/c222b3fefa4c2dd81fb46b48b4a8dc60.webp"
+          ],
+          "photoRefs": [
+            "0dbb285ba9fd8440b27f"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f012",
+      "district": "Баянгол",
+      "place": "Нарны хороолол",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10880207_narnii-horoolol-80m2-3-oroo/",
+          "title": "Нарны хороололд 80m2 3 өрөө байр",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": "3.2 сая ₮",
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "Нарны хороолол",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-26T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/d6/f4/d6f419c44f29f67aff83b2ccbc7d373e.webp",
+            "https://cdn1.unegui.mn/media/cache1/3d/24/3d240505e8fb2236902e56f1c3e241f5.webp",
+            "https://cdn1.unegui.mn/media/cache1/76/67/7667550fcd6ba050db520098e0755599.webp",
+            "https://cdn1.unegui.mn/media/cache1/b7/56/b7566f746f0d2952600dede17bbeb39d.webp",
+            "https://cdn1.unegui.mn/media/cache1/64/1c/641ce0128b93957b02c817b9b8438eb5.webp",
+            "https://cdn1.unegui.mn/media/cache1/b4/12/b412ead7973dbf3de014c35aeed6bace.webp",
+            "https://cdn1.unegui.mn/media/cache1/04/08/0408c136706ab13868ae4fe5ab085ebf.webp",
+            "https://cdn1.unegui.mn/media/cache1/c8/ed/c8edd47d71524f86d511a9faa85f997a.webp"
+          ],
+          "photoRefs": [
+            "309a8ddc0b88ef98eb43",
+            "3b1fafc75dac2d9cd343",
+            "150dc4d4cbcc955f1eb4",
+            "93a7e04c7fbdbbbfa3c3",
+            "c4334ad0d06855eaa639",
+            "87bac771d906acd2d5fa",
+            "664421f51917466511a4",
+            "1e39290339fe0b3bb76a"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f013",
+      "district": "Чингэлтэй",
+      "place": "2-р хороо",
+      "rooms": 2,
+      "area": 45,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10764253_khotyn-tovd-computer-land-iin-iag-khazhuud-40-miangatyn-28-r-bair/",
+          "title": "Хотын төвд, computer land-ийн яг хажууд 45мкв 2 өрөө",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Чингэлтэй",
+          "place": "2-р хороо",
+          "rooms": 2,
+          "area": 45,
+          "postedAt": "2026-11-26T18:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/7b/c6/7bc6e122ade7a38962e2f1e81d1cb9c6.webp"
+          ],
+          "photoRefs": [
+            "92e6d79bd3d89c89ab8b"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f014",
+      "district": "Хан-Уул",
+      "place": "River Garden",
+      "rooms": 4,
+      "area": 133.7,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927945_river-plazad-khagas-tavilgatai-133-7-mkv-mastertai-4-oroo-oron-suuts/",
+          "title": "Ривер плазад хагас тавилгатай 133.7 мкв мастертай 4 өрөө орон сууц",
+          "rawPrice": "7.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 7500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "River Garden",
+          "rooms": 4,
+          "area": 133.7,
+          "postedAt": "2026-11-26T17:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/08/91/08914af2722c94495c97117e6110f078.webp"
+          ],
+          "photoRefs": [
+            "b41ca210bf69e2e63d74"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f015",
+      "district": "Баянзүрх",
+      "place": "26-р хороо",
+      "rooms": 3,
+      "area": 79,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927808_bzd-baianmongol-khoroolold-79mkv-3-oroo-bair-tureesluulne/",
+          "title": "Бзд, баянмонгол хороололд 79мкв 3 өрөө байр",
+          "rawPrice": "2.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "26-р хороо",
+          "rooms": 3,
+          "area": 79,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/b1/fb/b1fbd23f83ca120f39cdb1e55171434d.webp"
+          ],
+          "photoRefs": [
+            "9d02be8a32c927870f08"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f016",
+      "district": "Хан-Уул",
+      "place": "Зайсан",
+      "rooms": 4,
+      "area": 174,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10815688_river-garden-1-khotkhond-4-oroo-kholsluulne/",
+          "title": "River garden 1 хотхонд 4 өрөө 174мкв",
+          "rawPrice": "8 сая ₮",
+          "previousRawPrice": "9.5 сая ₮",
+          "cleanPrice": 8000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Зайсан",
+          "rooms": 4,
+          "area": 174,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/8b/8a/8b8afa8ac5d44e41731d4833549d4988.webp"
+          ],
+          "photoRefs": [
+            "7b4708a0c02617b6ec1d"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f017",
+      "district": "Сүхбаатар",
+      "place": "Цирк",
+      "rooms": 2,
+      "area": 45,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10895663_sbd-5-khoroo-narny-zam-daguu-ulsyn-6-r-surguul-urd-2-oroo-kholsluulne/",
+          "title": "Их дэлгүүрийн зүүн талд 2 өрөө 45мкв",
+          "rawPrice": "1.9 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1900000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "Цирк",
+          "rooms": 2,
+          "area": 45,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/b3/0d/b30d5fa85c97b9439d7c4970aa4a6cb4.webp"
+          ],
+          "photoRefs": [
+            "803af2188d6c33ad48c7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f018",
+      "district": "Баянзүрх",
+      "place": "36-р хороо",
+      "rooms": 2,
+      "area": 47,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10924210_zaisan-enkhzhin-khotkhond-2-oroo-kholsluulne/",
+          "title": "Их монгол хороололд 47мк 2 өрөө байр",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "36-р хороо",
+          "rooms": 2,
+          "area": 47,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/d4/3b/d43bc3353bc1aff28de1936c8599d42e.webp"
+          ],
+          "photoRefs": [
+            "9fb71f91fbfec732fc06"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f019",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 4,
+      "area": 83,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10914809_iaarmag-khotyn-zakhirgaany-urd-enkh-togol-khotkhond-4-oroo-bair-kholsluulne/",
+          "title": "Яармаг, хотын захиргааны урд энх төгөл хотхонд 4 өрөө байр 83мкв",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 4,
+          "area": 83,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/4b/ff/4bff0d35a8c7be7cdf5561e9877c5df3.webp"
+          ],
+          "photoRefs": [
+            "e81cd5ca745c64f9816c"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f020",
+      "district": "Сүхбаатар",
+      "place": "1-р хороо",
+      "rooms": 3,
+      "area": 106.54,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10904373_khotyn-a-busnisdeg-mashiny-zuun-tald-burd-tsamkhag-34-r-bairand-106-54mkv-3-oro/",
+          "title": "Хотын а бүс нисдэг машины зүүн талд бүрд цамхаг 34-р байранд 106.54мкв 3 өрөө байр",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 3,
+          "area": 106.54,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/3c/f8/3cf80fa3e12e12a88baba9f7f6616526.webp"
+          ],
+          "photoRefs": [
+            "dd0730e7bd992910b163"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f021",
+      "district": "Хан-Уул",
+      "place": "19-р хороолол",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10920080_19-r-khoroolol-khan-uul-tsogtsolbor-khokhond-2-oroo-bair-tureesluulne/",
+          "title": "19-р хороолол хан уул цогцолбор хохонд 2 өрөө байр 50мкв",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "19-р хороолол",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/e7/14/e7142703720d45304dbd09f113e8dc9a.webp"
+          ],
+          "photoRefs": [
+            "c39281da4064f5d8b085"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f022",
+      "district": "Сүхбаатар",
+      "place": "11-р хороо",
+      "rooms": 2,
+      "area": 49,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927161_st-apartment-2-oroo/",
+          "title": "St apartment | 2 өрөө 49мкв",
+          "rawPrice": "2.1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "11-р хороо",
+          "rooms": 2,
+          "area": 49,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/af/6e/af6ec2cd165ca2317f7755718b5edf3e.webp"
+          ],
+          "photoRefs": [
+            "1aaa17bbe812a5f3a039"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f023",
+      "district": "Баянзүрх",
+      "place": "Улаанхуаран",
+      "rooms": 1,
+      "area": 30,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10916072_bzd-ulaankhuaran-creative-apartment-d-shine-1-oroo-bair-tureesluulene/",
+          "title": "БЗД, Улаанхуаран, Creative Apartment 1 өрөө 30мкв",
+          "rawPrice": "1.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Улаанхуаран",
+          "rooms": 1,
+          "area": 30,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/25/b2/25b2f8623b9db7304089faedb13c7ad2.webp"
+          ],
+          "photoRefs": [
+            "53dc155638a6a9eb7cdb"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f024",
+      "district": "Баянгол",
+      "place": "25-р эмийн сан",
+      "rooms": 2,
+      "area": 62,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927588_62m2-buren-tavilgatai-2-oroo-baruun-4-zamd/",
+          "title": "Баруун 4 замд 62м2 бүрэн тавилгатай 2 өрөө",
+          "rawPrice": "1.9 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1900000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "25-р эмийн сан",
+          "rooms": 2,
+          "area": 62,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/71/02/7102c2eb9f6420d92fc824818b08a13c.webp"
+          ],
+          "photoRefs": [
+            "04b14f18d29553f711db"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f025",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10888519_kh-apartment-khotkhond-2-oroo-kholsluulne/",
+          "title": "Kh апартмент хотхонд 2 өрөө 50мкв",
+          "rawPrice": "2.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/7c/c0/7cc060ee5e2fb9c4b9457097fcb389ec.webp"
+          ],
+          "photoRefs": [
+            "416d18a8ff21b5e99dd1"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f026",
+      "district": "Баянзүрх",
+      "place": "14-р хороо",
+      "rooms": 2,
+      "area": 44,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10749287_2-oroo-bair/",
+          "title": "Бзд 14-р хороолол 2 өрөө байр 44мкв",
+          "rawPrice": "1.65 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1650000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "14-р хороо",
+          "rooms": 2,
+          "area": 44,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/f0/1b/f01bb1911ed956c13610dc8b91a4aa4b.webp"
+          ],
+          "photoRefs": [
+            "f827f5b27ab592b0fec5"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f027",
+      "district": "Баянгол",
+      "place": "Тээврийн товчоо",
+      "rooms": 1,
+      "area": 20,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927572_khotyn-tovd-1-oroo-bair-tureesluulne/",
+          "title": "Хотын төвд 1 өрөө байр 20мкв",
+          "rawPrice": "1.2 сая ₮",
+          "previousRawPrice": "1.3 сая ₮",
+          "cleanPrice": 1200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "Тээврийн товчоо",
+          "rooms": 1,
+          "area": 20,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/bf/31/bf311cac5bacf72b73b028016cd9c686.webp"
+          ],
+          "photoRefs": [
+            "c487c99d4333b203b73e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f028",
+      "district": "Хан-Уул",
+      "place": "23-р хороо",
+      "rooms": 3,
+      "area": 77,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10898422_mandala-water-garden/",
+          "title": "Mandala water garden 77m2 3 uruu",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "23-р хороо",
+          "rooms": 3,
+          "area": 77,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/14/8b/148bfed7400e6d63150a261964ca302d.webp"
+          ],
+          "photoRefs": [
+            "398819a0c227994ba7e2"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f029",
+      "district": "Баянзүрх",
+      "place": "13-р хороолол",
+      "rooms": 2,
+      "area": 45,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10882050_2-oroo-bair-tureesluulne/",
+          "title": "Бзд 2 өрөө байр 45мкв",
+          "rawPrice": "1.5 сая ₮",
+          "previousRawPrice": "1.8 сая ₮",
+          "cleanPrice": 1500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "13-р хороолол",
+          "rooms": 2,
+          "area": 45,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/02/0c/020c9dbf73795b6c63e28f6902f08893.webp"
+          ],
+          "photoRefs": [
+            "9a9ce5ef322d1a8bc936"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f030",
+      "district": "Хан-Уул",
+      "place": "23-р хороо",
+      "rooms": 3,
+      "area": 75,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10761886_khud-23r-khoroo-nova-vista-khotkhond-75mkv-3-oroo/",
+          "title": "Худ 23-р хороо nova vista хотхонд 75мкв 3 өрөө байр",
+          "rawPrice": "2.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "23-р хороо",
+          "rooms": 3,
+          "area": 75,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/2e/1e/2e1e463f55e00212b257ded6b5d448e8.webp"
+          ],
+          "photoRefs": [
+            "24b2c3acd82d52d36cd4"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f031",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 2,
+      "area": 51,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927539_2oroo-bair-shuud-nuuzh-orzh-bolno-6-1/",
+          "title": "Худ 2 өрөө байр 51мкв",
+          "rawPrice": "1.6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 2,
+          "area": 51,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/63/8e/638e798563302d5b31d37f2191814826.webp"
+          ],
+          "photoRefs": [
+            "9ae8397fe7af8844840e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f032",
+      "district": "Сүхбаатар",
+      "place": "Дөлгөөн нуур",
+      "rooms": 2,
+      "area": 40,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927248_dolgoonnuur-st-apartment-2-oroo-bair-kholsluulne/",
+          "title": "Дөлгөөннуур st apartment 2 өрөө байр 40мкв",
+          "rawPrice": "1.7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1700000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "Дөлгөөн нуур",
+          "rooms": 2,
+          "area": 40,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/6a/6b/6a6b4a7a5f701c224bdbb2fcc789ab42.webp"
+          ],
+          "photoRefs": [
+            "625e4ec28dbc0ef72be4"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f033",
+      "district": "Баянзүрх",
+      "place": "14-р хороо",
+      "rooms": 2,
+      "area": 47,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927244_bzd-tsagaan-khuaran-d-2-oroo-buren-tavilgatai/",
+          "title": "Бзд, цагаан хуаран-д 2 өрөө бүрэн тавилгатай 47мкв",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "14-р хороо",
+          "rooms": 2,
+          "area": 47,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/8f/65/8f65eeb85d8ade8d2b0bc98c8ffc80cf.webp"
+          ],
+          "photoRefs": [
+            "146d6d6f8a350c7c2e83"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f034",
+      "district": "Сүхбаатар",
+      "place": "1-р хороо",
+      "rooms": 4,
+      "area": 295.4,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10722863_sbd-1-r-khoroo-bluesky-residence-295-4-m2-4-oroo-bair-tureesluulne/",
+          "title": "Сбд, 1-р хороо bluesky residence 295.4 м² 4 өрөө байр",
+          "rawPrice": "18 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 18000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 4,
+          "area": 295.4,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ab/69/ab69f5bec9a0465ac8948091fbf92ae9.webp"
+          ],
+          "photoRefs": [
+            "c5b75e12c0dd5184a7d7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f035",
+      "district": "Баянзүрх",
+      "place": "11-р хороо",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10867550_sky-resort-zuun-tald-sky-mountain-villa-3-oroo-bair-80mkv/",
+          "title": "Sky resort зүүн талд sky mountain villa 3 өрөө байр 80мкв",
+          "rawPrice": "7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 7000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "11-р хороо",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/6a/18/6a18a3fef3cf45334acfce77a30f7471.webp"
+          ],
+          "photoRefs": [
+            "43e6296c7e25a04f1446"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f036",
+      "district": "Сүхбаатар",
+      "place": "5-р хороо",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10763230_khotyn-tovd-tsirkiin-khazhuud-buren-tavilgatai-2-oroo-50m2-bair/",
+          "title": "Хотын төвд циркийн хажууд бүрэн тавилгатай 2 өрөө 50м2 байр",
+          "rawPrice": "2.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "5-р хороо",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/9a/dc/9adc536397e881d03962dad191761b9b.webp"
+          ],
+          "photoRefs": [
+            "38399451c211f25e8ca7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f037",
+      "district": "Хан-Уул",
+      "place": "11-р хороо",
+      "rooms": 2,
+      "area": 56.23,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10840543_zaisan-buiant-khotkhond-shine-2-oroo-56-23m2-bair/",
+          "title": "Зайсан буянт хотхонд шинэ 2 өрөө 56,23м2 байр",
+          "rawPrice": "2.1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "11-р хороо",
+          "rooms": 2,
+          "area": 56.23,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/fb/4d/fb4df682076104085a76af6a8eb3b8af.webp"
+          ],
+          "photoRefs": [
+            "0bba725e6a51fc99210f"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f038",
+      "district": "Хан-Уул",
+      "place": "Мишээл",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927232_khud-20-r-khoroo-rio-residence-2-oroo-shine-bair-50m2/",
+          "title": "Худ, 20-р хороо rio residence 2 өрөө шинэ байр 50м2",
+          "rawPrice": "1.7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1700000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Мишээл",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/c6/3c/c63cdd5d988766a54315780d40072e1f.webp"
+          ],
+          "photoRefs": [
+            "6151c3ca17cd53eb81a7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f039",
+      "district": "Баянзүрх",
+      "place": "Олимп хотхон",
+      "rooms": 5,
+      "area": 130,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10670805_olimp-khotkhond-130mkv-5-oroo-oron-suuts-tureesluulne/",
+          "title": "Олимп хотхонд 130мкв 5 өрөө",
+          "rawPrice": "4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 4000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Олимп хотхон",
+          "rooms": 5,
+          "area": 130,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/e2/fb/e2fb216d945983ad7ba8591a436c8808.webp"
+          ],
+          "photoRefs": [
+            "b336f729ad783efa06c7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f040",
+      "district": "Сүхбаатар",
+      "place": "1-р хороо",
+      "rooms": 4,
+      "area": 173,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10699773_olimpik-rezidens-khotkhond-4-oroo-oron-suuts-urt-khugatsaagaar-tureesluulne/",
+          "title": "Олимпик резиденс хотхонд 4 өрөө 173мкв орон сууц",
+          "rawPrice": "10 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 10000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "1-р хороо",
+          "rooms": 4,
+          "area": 173,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/84/46/84460dd028f40ece7195c8860951d027.webp"
+          ],
+          "photoRefs": [
+            "4360e30dc555d142bab5"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f041",
+      "district": "Баянгол",
+      "place": "17-р хороо",
+      "rooms": 3,
+      "area": 44,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10927213_tavilgatai-gal-togoo-tusdaa-3-oroo-bair-tureesluulne-modny2-zam-daguu-bukh-ium-oir/",
+          "title": "Бгд модны-2 зам дагуу 3 өрөө байр 44мкв",
+          "rawPrice": "2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "17-р хороо",
+          "rooms": 3,
+          "area": 44,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/5b/20/5b20e58ea416c71b3533973fb92ed37b.webp"
+          ],
+          "photoRefs": [
+            "4ad500089fa4c69f8e35"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f042",
+      "district": "Баянзүрх",
+      "place": "16-р хороолол",
+      "rooms": 2,
+      "area": 40,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10890383_2-oroo-bair-tureesluulne/",
+          "title": "Бзд 19-р хороо green apartment хотхонд 2 өрөө байр 40мкв",
+          "rawPrice": "1.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "16-р хороолол",
+          "rooms": 2,
+          "area": 40,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/52/50/5250a887060ea6c54ba792be08ca43b6.webp"
+          ],
+          "photoRefs": [
+            "e5e103dcf338ef251ae8"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f043",
+      "district": "Хан-Уул",
+      "place": "18-р хороо",
+      "rooms": 5,
+      "area": 242,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10908670_river-garden-1-d-5-oroo-kholsluulne/",
+          "title": "River Garden 1.д 5 өрөө 242м2",
+          "rawPrice": "9.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 9500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "18-р хороо",
+          "rooms": 5,
+          "area": 242,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/c3/6c/c36c72cad10b2cf2c969ecfaa6dfedd0.webp"
+          ],
+          "photoRefs": [
+            "f898b15084a07bef9761"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f044",
+      "district": "Сүхбаатар",
+      "place": "2-р хороо",
+      "rooms": 4,
+      "area": 119,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10908544_khotyn-tovd-220k-residence-4oroo-kholsluulne/",
+          "title": "Хотын төвд 220к residence 4 өрөө 119мкв",
+          "rawPrice": "9.9 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 9900000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "2-р хороо",
+          "rooms": 4,
+          "area": 119,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/dd/25/dd25210549b468c70da98dfd6ab4396e.webp"
+          ],
+          "photoRefs": [
+            "9ec906ba3efe158cb3a9"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f045",
+      "district": "Хан-Уул",
+      "place": "120 мянгат",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10923916_120-miangat-tsengeldekh-khotkhond-buren-tavilgatai-3oroo-bair/",
+          "title": "Худ 120 мянгат цэнгэлдэх хотхонд 3 өрөө байр 80мкв",
+          "rawPrice": "3.6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "120 мянгат",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/f3/dc/f3dc99443aa22cab4cc5c4d4c62ba47d.webp"
+          ],
+          "photoRefs": [
+            "9ad8eb6fa6a6a87ea3f4"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f046",
+      "district": "Баянзүрх",
+      "place": "Баянмонгол хороолол",
+      "rooms": 2,
+      "area": 50.9,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10868683_bzd-26-r-khoroo-saruul-khotkhond-tavilgatai-2oroo-bair/",
+          "title": "Бзд 26-р хороо саруул хотхонд 2 өрөө байр 50.9мкв",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Баянмонгол хороолол",
+          "rooms": 2,
+          "area": 50.9,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/dd/8c/dd8c4a4c535315f7ce11da30be156ef3.webp"
+          ],
+          "photoRefs": [
+            "6b6b3a3a72d23f6e3210"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f047",
+      "district": "Баянзүрх",
+      "place": "Баянмонгол хороолол",
+      "rooms": 2,
+      "area": 52,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10922191_bzd-26-r-khoroo-saruul-khotkhond-tavilgatai-2oroo-bair/",
+          "title": "Бзд, 26-р хороо саруул хотхонд 2 өрөө байр 52мкв",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Баянмонгол хороолол",
+          "rooms": 2,
+          "area": 52,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/70/f3/70f398a7bc0d9286e844b90733fe44fd.webp"
+          ],
+          "photoRefs": [
+            "4efcaa702c3e9d539016"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f048",
+      "district": "Баянзүрх",
+      "place": "3-р хороо",
+      "rooms": 2,
+      "area": 51,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10760081_central-garden-khotkhond-tsoo-shine-2-oroo-oron-suuts-kholsluulne/",
+          "title": "Central garden хотхонд шинэ 2 өрөө орон сууц 51мкв",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "3-р хороо",
+          "rooms": 2,
+          "area": 51,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/97/90/979044dfbffae99834638b6683e5fce1.webp"
+          ],
+          "photoRefs": [
+            "8f99cc21a4831310b2d8"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f049",
+      "district": "Баянзүрх",
+      "place": "Бөхийн Өргөө",
+      "rooms": 1,
+      "area": 74,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10586098_tokyo-residence-d-duplekh-zagvaryn-74mkv-tureesluulne/",
+          "title": "Бзд tokyo residence-д дуплех загварын 74мкв 1 өрөө",
+          "rawPrice": "3.5 сая ₮",
+          "previousRawPrice": "3.85 сая ₮",
+          "cleanPrice": 3500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Бөхийн Өргөө",
+          "rooms": 1,
+          "area": 74,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/5f/a2/5fa24b6135dc4b85fa89dfb4a7aa8c66.webp"
+          ],
+          "photoRefs": [
+            "9d26521d421ba9788227"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f050",
+      "district": "Сүхбаатар",
+      "place": "Дөлгөөн нуур",
+      "rooms": 2,
+      "area": 42,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926300_orgoo-2-khagas-tavilgatai-2-oroo-42m2/",
+          "title": "Өргөө 2 хагас тавилгатай 2 өрөө 42м2",
+          "rawPrice": "1.7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1700000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "Дөлгөөн нуур",
+          "rooms": 2,
+          "area": 42,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/29/5c/295cdfdb440b6cabf0bb379167bcf84c.webp"
+          ],
+          "photoRefs": [
+            "8e91c1faa207646ec7b4"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f051",
+      "district": "Хан-Уул",
+      "place": "River Garden",
+      "rooms": 5,
+      "area": 180,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926731_river-garden-180-m2-5-oroo-oron-suuts-urt-khugatsaagaar-tureesluulne/",
+          "title": "River garden 180м² 5 өрөө орон сууц",
+          "rawPrice": "11 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 11000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "River Garden",
+          "rooms": 5,
+          "area": 180,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/99/b0/99b0486ad70e0c455bbd11e4a7e2faec.webp"
+          ],
+          "photoRefs": [
+            "81c234e5dfac9bb560de"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f052",
+      "district": "Баянзүрх",
+      "place": "Улаанхуаран",
+      "rooms": 2,
+      "area": 42,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10923661_bzd-ulaankhauran-komfort-khotkhond-2oroo-bair/",
+          "title": "Бзд улаанхауран комфорт хотхонд 2 өрөө байр 42мкв",
+          "rawPrice": "1.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Улаанхуаран",
+          "rooms": 2,
+          "area": 42,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ce/06/ce06d288cf9fb829c0b0c584a28d141e.webp"
+          ],
+          "photoRefs": [
+            "fe3235c0aca34d0ebf22"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f053",
+      "district": "Сүхбаатар",
+      "place": "64-р дэлгүүр",
+      "rooms": 2,
+      "area": 35,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10878116_bagshiin-deediin-zuun-khoino-buren-tavilgatai-2-oroo-suuts-tureesluulne/",
+          "title": "Багшийн дээдийн зүүн хойно 2 өрөө сууц 35мкв",
+          "rawPrice": "2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "64-р дэлгүүр",
+          "rooms": 2,
+          "area": 35,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/94/e7/94e7f61f9c7f17fcf3574ea74af74994.webp"
+          ],
+          "photoRefs": [
+            "9984a0f3bffd52a787c5"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f054",
+      "district": "Баянгол",
+      "place": "Модны 2",
+      "rooms": 3,
+      "area": 55,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10858153_modny-2-elegance-khotkhond-buren-tavilgatai-3-oroo-oron-suuts/",
+          "title": "Модны 2. elegance хотхонд 3 өрөө орон сууц 55мкв",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "Модны 2",
+          "rooms": 3,
+          "area": 55,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/b2/48/b2483f5ed8812446245123172bc82ed3.webp"
+          ],
+          "photoRefs": [
+            "ae6725943fdf40361b51"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f055",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 2,
+      "area": 66,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926700_global-town-naadam-center-iin-derged/",
+          "title": "Global town naadam center-iin derged 2 uruu 66mkw",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 2,
+          "area": 66,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/91/3d/913d006901f64a8ca5f1371f172a3933.webp"
+          ],
+          "photoRefs": [
+            "98dac8e8d8d271c50333"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f056",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 3,
+      "area": 110,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10906052_nukht-park-9-khotkhond-110-mkv-3-oroo-oron-suuts-tureesluulne/",
+          "title": "Нүхт парк 9 хотхонд 110 мкв 3 өрөө орон сууц",
+          "rawPrice": "2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 3,
+          "area": 110,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/4e/ba/4eba6f6cb43f55853fe39f82e8c97361.webp"
+          ],
+          "photoRefs": [
+            "8743a5c99dddfd28da13"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f057",
+      "district": "Баянзүрх",
+      "place": "26-р хороо",
+      "rooms": 3,
+      "area": 76,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926684_saruul-khoroolol-mastertai-3-oroo/",
+          "title": "Саруул хороолол, мастертай 3 өрөө 76мкв",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "26-р хороо",
+          "rooms": 3,
+          "area": 76,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/d6/55/d655b36e37cafd69fb74b34af2d943ac.webp"
+          ],
+          "photoRefs": [
+            "64285560df4b22d01560"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f058",
+      "district": "Баянзүрх",
+      "place": "16-р хороо",
+      "rooms": 2,
+      "area": 42,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10921461_bzd-16-khoroond-2-oroo-bair-42mkv/",
+          "title": "Бзд 16 хороонд 2 өрөө байр 42мкв",
+          "rawPrice": "1.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "16-р хороо",
+          "rooms": 2,
+          "area": 42,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/2c/42/2c4210a85150429ab2a566a4a9eb2ae7.webp",
+            "https://cdn1.unegui.mn/media/cache1/f7/02/f70277b4752632e156b5a0c7485e97c7.webp",
+            "https://cdn1.unegui.mn/media/cache1/1a/d9/1ad934e31418296bc19e6b17503d5649.webp",
+            "https://cdn1.unegui.mn/media/cache1/04/54/0454a4fff961b6e5261e9f0c72ac3ca1.webp",
+            "https://cdn1.unegui.mn/media/cache1/64/60/6460eadb2b40d3e1a8989767743d3355.webp",
+            "https://cdn1.unegui.mn/media/cache1/03/71/03714b8a0716a1ab37aa154d3cb5de1c.webp",
+            "https://cdn1.unegui.mn/media/cache1/9f/9e/9f9e7a156ea52b50c345db43134d84e7.webp",
+            "https://cdn1.unegui.mn/media/cache1/a9/8e/a98e6f1a3054ae2779bc5cb6c90dcaad.webp"
+          ],
+          "photoRefs": [
+            "3d2f8acb77d4fe988078",
+            "6a439541dee2f88e6091",
+            "b13525aab6e2f0896474",
+            "2274e296e8fcbc8f78e6",
+            "0941e37c1614f25cbcfe",
+            "48c866652fb1bef1868e",
+            "f8a2b00b5758fe4fb14e",
+            "fcebad6e38e28d969b1a"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f059",
+      "district": "Хан-Уул",
+      "place": "24-р хороо",
+      "rooms": 2,
+      "area": 60,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926521_iaarmag-khunnu-villa-khotkhond-bair-tureesluulne/",
+          "title": "Яармаг Хүннү вилла хотхонд 2 өрөө 60мкв байр",
+          "rawPrice": "2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "24-р хороо",
+          "rooms": 2,
+          "area": 60,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/c4/37/c437c16ca784fa7f41ea2476296840e8.webp"
+          ],
+          "photoRefs": [
+            "1676a2e7530523b8afb9"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f060",
+      "district": "Баянзүрх",
+      "place": "Чингис зочид буудал",
+      "rooms": 2,
+      "area": 65.7,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10895111_khotyn-tov-sansaryn-emart-khoino-river-kastled-buren-tavilgatai-2-oroo-bair-turees/",
+          "title": "Сансарын емарт хойно ривер кастлед 65.7мкв 2 өрөө байр",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Чингис зочид буудал",
+          "rooms": 2,
+          "area": 65.7,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/05/ac/05ac84ce4cbd54db80a12d60d90959a9.webp"
+          ],
+          "photoRefs": [
+            "2b5ed7afe38787386afe"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f061",
+      "district": "Хан-Уул",
+      "place": "Хүннү",
+      "rooms": 3,
+      "area": 69.93,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10888290_khud-khunnu2222-69-93m-kv-buren-tavilgatai-grazhtai-3oroo-oron-suuts-tureesluulne/",
+          "title": "Худ, хүннү2222, 69.93м.кв бүрэн тавилгатай, гражтай 3 өрөө орон сууц",
+          "rawPrice": "3.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хүннү",
+          "rooms": 3,
+          "area": 69.93,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/e6/4d/e64d2a40afd6933f7451a9fb87fcc5be.webp"
+          ],
+          "photoRefs": [
+            "84edba7db64746ac4088"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f062",
+      "district": "Хан-Уул",
+      "place": "18-р хороо",
+      "rooms": 2,
+      "area": 59.92,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10920475_gerlug-vista-59-92m2-2-oroo-turees/",
+          "title": "Гэрлүг vista 59.92m2 2 өрөө",
+          "rawPrice": "3.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "18-р хороо",
+          "rooms": 2,
+          "area": 59.92,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/54/cd/54cd0260a8c83c2d8fe639ca2aa82380.webp"
+          ],
+          "photoRefs": [
+            "e2939a3916c40d7a18e1"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f063",
+      "district": "Баянзүрх",
+      "place": "26-р хороо",
+      "rooms": 3,
+      "area": 71,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926482_encanto-town-2-khotkhond-71mkv-3-oroo/",
+          "title": "Encanto town 2 хотхонд 71мкв 3 өрөө",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "26-р хороо",
+          "rooms": 3,
+          "area": 71,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/5b/28/5b2895227e9ba4890f820c75f0b06bac.webp"
+          ],
+          "photoRefs": [
+            "4ae2cde62e9de4640b70"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f064",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10852724_iaarmag-happy-residence-buren-taviogatai-3oroo-bair/",
+          "title": "Яармагт happy residence 3 өрөө байр 80мкв",
+          "rawPrice": "2.7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2700000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/e0/34/e034a69aea93fbb6b5be1f2f3b471d1d.webp"
+          ],
+          "photoRefs": [
+            "0992a19631bc9c4c1366"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f065",
+      "district": "Хан-Уул",
+      "place": "Japan town",
+      "rooms": 2,
+      "area": 68,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10890285_japan-town-d-buren-tavilgatai-2oroo-bair/",
+          "title": "Japan town-д 2 өрөө байр 68мкв",
+          "rawPrice": "3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Japan town",
+          "rooms": 2,
+          "area": 68,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/14/97/1497d4e56d4a28e8c4a0f5ef8837e123.webp"
+          ],
+          "photoRefs": [
+            "cb8d34440246ef9c4301"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f066",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 3,
+      "area": 80,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10862571_khud-15-r-khoroo-emart-yn-baruun-khoino-solaris-rezidens-d-80mkv-3oroo-bair/",
+          "title": "Худ 15-р хороо emart-ын баруун хойно соларис резиденс-д 80мкв 3 өрөө байр",
+          "rawPrice": "3.3 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 3,
+          "area": 80,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/0e/39/0e397784c541515a40199548f22a9d04.webp"
+          ],
+          "photoRefs": [
+            "bbf2633f1cdb8fdd1d77"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f067",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 3,
+      "area": 78,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10852787_gerlug-vista-khotkhond-78mkv-3-oroo-bair-grashtai/",
+          "title": "Гэрлүг виста хотхонд 78мкв 3 өрөө байр граштай",
+          "rawPrice": "3.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 3,
+          "area": 78,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ea/bb/eabb971500840e7086afa2606a823c9c.webp"
+          ],
+          "photoRefs": [
+            "300069610001660b7dc8"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f068",
+      "district": "Хан-Уул",
+      "place": "24-р хороо",
+      "rooms": 3,
+      "area": 60,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10916258_khan-uul-iaarmag-tuul-view-60mkv-3oroo-bair/",
+          "title": "Хан-уул яармаг tuul view 60мкв 3 өрөө байр",
+          "rawPrice": "2.1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2100000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "24-р хороо",
+          "rooms": 3,
+          "area": 60,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/83/e2/83e26c5b32cd7fb804ea6d00f424315b.webp"
+          ],
+          "photoRefs": [
+            "8c5ea553a0a94580a9e3"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f069",
+      "district": "Баянзүрх",
+      "place": "Баянмонгол хороолол",
+      "rooms": 3,
+      "area": 89,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10890322_bzd-26-r-time-tower-buren-tavilgatai-3oroo-bair/",
+          "title": "Бзд 26-р хороо time tower 3 өрөө байр 89мкв",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Баянмонгол хороолол",
+          "rooms": 3,
+          "area": 89,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/16/c3/16c3e1e9b8cfe1d7cfc1a5dfc81cff8c.webp"
+          ],
+          "photoRefs": [
+            "9a6be57b336ceed8a5a2"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f070",
+      "district": "Хан-Уул",
+      "place": "Хансвилл хотхон",
+      "rooms": 3,
+      "area": 78,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10907587_khansvilld-buren-tavilgatai-3oroo-bair/",
+          "title": "Худ хансвиллд 3 өрөө байр 78мкв",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хансвилл хотхон",
+          "rooms": 3,
+          "area": 78,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/cb/26/cb267a49db59fa30d80398f4b007d839.webp"
+          ],
+          "photoRefs": [
+            "92f564133b799423869e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f071",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 3,
+      "area": 77.7,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10863163_khanbogd-khotkhond-buren-tavilgatai-3-oroo-kholsluulne/",
+          "title": "Ханбогд хотхонд бүрэн тавилгатай 3 өрөө 77.7m2",
+          "rawPrice": "1.6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 3,
+          "area": 77.7,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/ea/7d/ea7dd25de104dff6f900460cea650c52.webp"
+          ],
+          "photoRefs": [
+            "a00b155180a3099885a7"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f072",
+      "district": "Хан-Уул",
+      "place": "24-р хороо",
+      "rooms": 4,
+      "area": 175,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10811483_khunnu-mollyn-urd-artsat-1khotkhond-gal-togootoi-175-mkv-4oroo-bair/",
+          "title": "Хүннү моллын урд арцат 1 хотхонд 175мкв 4 өрөө байр",
+          "rawPrice": "3.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "24-р хороо",
+          "rooms": 4,
+          "area": 175,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/f7/6c/f76c4444aeb05f1917a418b7e073b212.webp"
+          ],
+          "photoRefs": [
+            "01cd96b94bc745a47f35"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f073",
+      "district": "Чингэлтэй",
+      "place": "3-р хороо",
+      "rooms": 3,
+      "area": 34,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10581781_uid-yn-baruun-tald-gal-togoo-tusdaa-khagas-tavilgatai-3-oroo/",
+          "title": "Уид-ын баруун талд гал тогоо тусдаа хагас тавилгатай 3 өрөө 34м2",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Чингэлтэй",
+          "place": "3-р хороо",
+          "rooms": 3,
+          "area": 34,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/79/94/7994cbbffb1a47500408c7f216c0826e.webp"
+          ],
+          "photoRefs": [
+            "a2ac4af1df0a92e2c28d"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f074",
+      "district": "Баянзүрх",
+      "place": "26-р хороо",
+      "rooms": 4,
+      "area": 110,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10859261_tsetserlegt-khureelen-narlag-orgoo-khotkhond-4-oroo-oron-suuts-tureesluulne/",
+          "title": "Цэцэрлэгт хүрээлэн Нарлаг өргөө хотхонд 4 өрөө орон сууц 110m2",
+          "rawPrice": "3.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 3500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "26-р хороо",
+          "rooms": 4,
+          "area": 110,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/44/c2/44c20876e02dfd2fb6bfd8eb5647a6f8.webp"
+          ],
+          "photoRefs": [
+            "35c6113a891784acd59a"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f075",
+      "district": "Хан-Уул",
+      "place": "15-р хороо",
+      "rooms": 3,
+      "area": 82.42,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10779477_alpha-zone-khotkhond-82-42mkv-3-oroo-oron-suuts/",
+          "title": "Alpha zone хотхонд 82,42мкв 3 өрөө орон сууц",
+          "rawPrice": "4.2 сая ₮",
+          "previousRawPrice": "4.5 сая ₮",
+          "cleanPrice": 4200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "15-р хороо",
+          "rooms": 3,
+          "area": 82.42,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/df/ad/dfad18d0c1dfad90db6b336147287469.webp"
+          ],
+          "photoRefs": [
+            "7f63e74ae0ee5df61b3e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f076",
+      "district": "Хан-Уул",
+      "place": "4-р хороо",
+      "rooms": 1,
+      "area": 30,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10923260_1-oroo-bair-tureesluulne/",
+          "title": "Ирээдүй хотхонд 1 өрөө 30м2 байр",
+          "rawPrice": "1 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1000000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "4-р хороо",
+          "rooms": 1,
+          "area": 30,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/2e/fe/2efefe0606f039e7614398848c48782f.webp"
+          ],
+          "photoRefs": [
+            "87cd05034a0930fa7d11"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f077",
+      "district": "Хан-Уул",
+      "place": "Яармаг",
+      "rooms": 3,
+      "area": 89,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10855331_aktiv-gardend-buren-tavilgatai-3-oroo-tureesluulne/",
+          "title": "Актив гарденд бүрэн тавилгатай 3 өрөө 89m2",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Яармаг",
+          "rooms": 3,
+          "area": 89,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/22/d2/22d26d912ac9e0d4c68d15b9b0d7c297.webp"
+          ],
+          "photoRefs": [
+            "23324197ad1b7478481a"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f078",
+      "district": "Баянзүрх",
+      "place": "Үндэсний цэцэрлэгт хүрээлэн",
+      "rooms": 2,
+      "area": 55,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10852132_mandala-taun-khotkhond-buren-tavilgatai-3-oroo-oron/",
+          "title": "Зайсан хүннү хотхонд шинэ 55м2 2 өрөө",
+          "rawPrice": "2.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Үндэсний цэцэрлэгт хүрээлэн",
+          "rooms": 2,
+          "area": 55,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/45/a8/45a854797e379ee8ba84854699552cba.webp"
+          ],
+          "photoRefs": [
+            "6ab11ee2ef079c10bd24"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f079",
+      "district": "Чингэлтэй",
+      "place": "50 мянгат",
+      "rooms": 2,
+      "area": 38,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10912221_uid-baruun-tald-2-oroo-buren-tavilgatai-bair/",
+          "title": "Уид, баруун талд 2 өрөө бүрэн тавилгатай байр 38мкв",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Чингэлтэй",
+          "place": "50 мянгат",
+          "rooms": 2,
+          "area": 38,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/12/61/1261802bb554c8e47899aa9293e9ff4f.webp"
+          ],
+          "photoRefs": [
+            "2018abe970f1e2eb651e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f080",
+      "district": "Хан-Уул",
+      "place": "Хурд",
+      "rooms": 1,
+      "area": 31.94,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926212_khurd-rapidad-tavilgatai-1-oroo-tureesluulne/",
+          "title": "Хурд рапидад тавилгатай 1 өрөө байр 31.94мкв",
+          "rawPrice": "1.6 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1600000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "Хурд",
+          "rooms": 1,
+          "area": 31.94,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/d0/3c/d03cadf8ed70a97b470677f9e859c93f.webp"
+          ],
+          "photoRefs": [
+            "24af5378bf906fca389e"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f081",
+      "district": "Баянзүрх",
+      "place": "Шинэ Монгол сургуулийн ойролцоо",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10898141_natur-gangaryn-bairand-2-oroo-tavilgatai/",
+          "title": "Бзд натур гангарын байранд 2 өрөө байр 50мкв",
+          "rawPrice": "1.7 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1700000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "Шинэ Монгол сургуулийн ойролцоо",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/46/51/4651e3840d088c8419d45a9c2eb4e791.webp"
+          ],
+          "photoRefs": [
+            "b2e49fe29aefc9867798"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f082",
+      "district": "Хан-Уул",
+      "place": "23-р хороо",
+      "rooms": 3,
+      "area": 93.35,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926037_iaarmagt-happy-residence-khotkhond-mastertai-garage-tai-3-oroo-bair-tureesluulne/",
+          "title": "Яармагт happy residence хотхонд мастертай, garage-тай 3 өрөө 93.35м2 байр",
+          "rawPrice": "2.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "23-р хороо",
+          "rooms": 3,
+          "area": 93.35,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/7d/83/7d835ef3cad0841daf9fa885b9bf6bda.webp"
+          ],
+          "photoRefs": [
+            "956e60ab16d793e60fd1"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f083",
+      "district": "Хан-Уул",
+      "place": "1-р хороо",
+      "rooms": 2,
+      "area": 50,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926051_kn-appartment/",
+          "title": "Кн аппартмент 2 өрөө 50м2",
+          "rawPrice": "2.2 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 2200000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "1-р хороо",
+          "rooms": 2,
+          "area": 50,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/9d/8b/9d8b9a378f2cc40275b822482d83e1b5.webp"
+          ],
+          "photoRefs": [
+            "f71e1d7971b190a1e919"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f084",
+      "district": "Хан-Уул",
+      "place": "23-р хороо",
+      "rooms": 3,
+      "area": 69.2,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926013_enkh-togol-khotkhond/",
+          "title": "Энх төгөл хотхонд 3 өрөө 69.2м2",
+          "rawPrice": "1.8 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1800000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Хан-Уул",
+          "place": "23-р хороо",
+          "rooms": 3,
+          "area": 69.2,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/71/a0/71a0d10db8def1f2ea842f65ac82a92c.webp"
+          ],
+          "photoRefs": [
+            "be784a41340ea39ab8df"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f085",
+      "district": "Баянзүрх",
+      "place": "14-р хороолол",
+      "rooms": 1,
+      "area": 24,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10926008_zuun-4-zamd-neg-oroo-tavilgatai-bair-tureesluulne/",
+          "title": "Зүүн 4 замд 1 өрөө 24мкв байр",
+          "rawPrice": "1.4 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1400000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянзүрх",
+          "place": "14-р хороолол",
+          "rooms": 1,
+          "area": 24,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/fe/8c/fe8c1a2a2cf0cfc9a4a01fcaec8cd686.webp"
+          ],
+          "photoRefs": [
+            "5996b86965ce0541590f"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f086",
+      "district": "Баянгол",
+      "place": "10-р хороолол",
+      "rooms": 2,
+      "area": 56.8,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10853053_bgd-10-r-khoroolold-2-oroo-tureesluulene/",
+          "title": "Бгд 10-р хороололд 2 өрөө 56.8 мкв орон сууц",
+          "rawPrice": "1.5 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 1500000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Баянгол",
+          "place": "10-р хороолол",
+          "rooms": 2,
+          "area": 56.8,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/43/60/4360ca64777db4dbb1b0a0e6c8ce895a.webp"
+          ],
+          "photoRefs": [
+            "c9d635ce3e7d4243f475"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f087",
+      "district": "Сүхбаатар",
+      "place": "5-р хороолол",
+      "rooms": 2,
+      "area": 67,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10788704_golomt-khotkhond-2-oroo-bair-tureesluulne/",
+          "title": "Голомт хотхонд 2 өрөө байр 67мкв",
+          "rawPrice": "2.3 сая ₮",
+          "previousRawPrice": "2.5 сая ₮",
+          "cleanPrice": 2300000,
+          "priceStatus": "valid",
+          "status": "active",
+          "district": "Сүхбаатар",
+          "place": "5-р хороолол",
+          "rooms": 2,
+          "area": 67,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/7e/ee/7eee5341f4a617d302f58c22d2c8d844.webp"
+          ],
+          "photoRefs": [
+            "71d7555353e564d3255d"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "f088",
+      "district": "Баянгол",
+      "place": "Богд-Ар",
+      "rooms": 3,
+      "area": 86,
+      "listings": [
+        {
+          "sourceUrl": "https://www.unegui.mn/adv/10808388_anduudad-86m2-buren-tavilgatai-3n-oroo-bair-tureesluulne/",
+          "title": "Андуудад 86мкв 3 өрөө байр",
+          "rawPrice": "325 сая ₮",
+          "previousRawPrice": null,
+          "cleanPrice": 325000000,
+          "priceStatus": "needs_review",
+          "status": "needs_review",
+          "district": "Баянгол",
+          "place": "Богд-Ар",
+          "rooms": 3,
+          "area": 86,
+          "postedAt": "2026-11-25T19:50:05.651Z",
+          "photos": [
+            "https://cdn1.unegui.mn/media/cache1/15/b3/15b3a04eda6d0dd66f34aeaba5f6d84f.webp"
+          ],
+          "photoRefs": [
+            "96a5ed86ad80ef66edb7"
+          ]
+        }
+      ]
+    }
+  ]
+}

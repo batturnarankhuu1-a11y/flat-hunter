@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "data:clean": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/clean-unegui-csv.ts",
+    "data:photos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/download-photos.ts",
     "db:seed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed-rentals.ts",
     "db:migrate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/migrate.ts",
     "scrape": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/scrape-unegui.ts"
@@ -19,12 +21,14 @@
     "drizzle-orm": "^0.45.4",
     "next": "16.4.6",
     "postgres": "^4.1.1",
+    "qrcode": "^1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.11",

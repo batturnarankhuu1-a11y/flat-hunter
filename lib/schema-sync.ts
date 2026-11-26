@@ -16,6 +16,9 @@ export const REQUIRED_COLUMNS: Record<string, string[]> = {
   listings: ["id", "flat_id", "source_url", "source", "title", "raw_description", "raw_price", "clean_price", "deal_type", "address", "district", "rooms", "area", "image_url", "photo_refs", "status", "created_at"],
   scrape_runs: ["id", "started_at", "finished_at", "status", "source", "pages_read", "listings_seen", "new_count", "failed_count", "error"],
   parse_errors: ["id", "url", "error_message", "created_at"],
+  saved_searches: ["id", "user_id", "district", "rooms", "max_price", "is_paid_alert", "created_at"],
+  payments: ["id", "invoice_id", "user_id", "plan", "amount", "provider", "status", "created_at", "paid_at"],
+  user_plans: ["user_id", "plan", "pro_until", "updated_at"],
 }
 
 /** Additive only — safe for the app to run lazily before its first query. */
@@ -37,6 +40,32 @@ CREATE TABLE IF NOT EXISTS parse_errors (
   url text NOT NULL,
   error_message text,
   created_at timestamp DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS saved_searches (
+  id serial PRIMARY KEY,
+  user_id text NOT NULL,
+  district text,
+  rooms integer,
+  max_price integer,
+  is_paid_alert boolean DEFAULT false,
+  created_at timestamp DEFAULT now()
+);
+CREATE TABLE IF NOT EXISTS payments (
+  id serial PRIMARY KEY,
+  invoice_id text NOT NULL UNIQUE,
+  user_id text NOT NULL,
+  plan text NOT NULL DEFAULT 'pro',
+  amount integer NOT NULL,
+  provider text NOT NULL DEFAULT 'demo',
+  status text NOT NULL DEFAULT 'pending',
+  created_at timestamp DEFAULT now(),
+  paid_at timestamp
+);
+CREATE TABLE IF NOT EXISTS user_plans (
+  user_id text PRIMARY KEY,
+  plan text NOT NULL DEFAULT 'pro',
+  pro_until timestamp NOT NULL,
+  updated_at timestamp DEFAULT now()
 );
 ALTER TABLE flats ADD COLUMN IF NOT EXISTS khoroo text;
 ALTER TABLE flats ADD COLUMN IF NOT EXISTS complex text;

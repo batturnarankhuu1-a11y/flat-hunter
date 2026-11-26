@@ -61,11 +61,11 @@ async function FlatDetail({ id }: { id: string }) {
 
         <section className="mt-8" aria-labelledby="listings-heading">
           <h2 id="listings-heading" className="text-xl font-bold tracking-tight text-slate-900">Энэ байрны {listings.length} зар</h2>
-          <p className="mt-1 text-sm text-slate-500">Нэг байрыг өөр өөр зараар, өөр үнээр тавьсан байна. Хамгийн хямд нь эхэндээ.</p>
+          {listings.length > 1 && <p className="mt-1 text-sm text-slate-500">Нэг байрыг өөр өөр зараар, өөр үнээр тавьсан байна. Хамгийн хямд нь эхэндээ.</p>}
           <ol className="mt-4 space-y-3">
             {listings.map((listing) => {
               const isValid = listing.status === "active" && listing.cleanPrice !== null
-              const isCheapest = isValid && listing.cleanPrice === cheapest
+              const isCheapest = listings.length > 1 && isValid && listing.cleanPrice === cheapest
               const difference = isValid && cheapest !== null ? listing.cleanPrice! - cheapest : null
               const fair = listingFairPrices.get(listing.id)
               return (
