@@ -4,6 +4,7 @@ import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@cl
 import { Suspense } from 'react'
 import ProButton from '@/components/ProButton'
 import SiteNav from '@/components/SiteNav'
+import ChatWidget from '@/components/ChatWidget'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function RootLayout({
             <div className="border-t border-slate-100 px-3 py-1.5 md:hidden"><Suspense><SiteNav /></Suspense></div>
           </header>
           {children}
+          <ChatWidget />
         </ClerkProvider>
       </body>
     </html>
