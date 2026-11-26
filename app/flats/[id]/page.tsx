@@ -9,6 +9,11 @@ import { getFlatListings } from "@/lib/db"
 import { MIN_GROUP_SIZE, WINDOW_DAYS } from "@/lib/fair-price"
 import { formatPostedAt, loadRentalCatalogue, parseId } from "@/lib/flats"
 import { formatMnt } from "@/lib/rent-price"
+import TrendChart from "@/components/TrendChart"
+import { loadMarketListings } from "@/lib/market"
+import type { MarketListing } from "@/lib/market-stats"
+import { median, priceTrend, trendUnit } from "@/lib/market-stats"
+import PriceSpread from "@/components/PriceSpread"
 
 export default function FlatPage({ params }: PageProps<"/flats/[id]">) {
   return (
@@ -29,7 +34,7 @@ async function FlatDetail({ id }: { id: string }) {
   // Listings change as they are ingested; always read them at request time.
   await connection()
 
-  const [{ flats, listingFairPrices, hiddenListingIds }, allListings] = await Promise.all([loadRentalCatalogue(), getFlatListings(flatId)])
+  const [{ flats, listingFairPrices, hiddenListingIds }, allListings, market] = await Promise.all([loadRentalCatalogue(), getFlatListings(flatId), loadMarketListings()])
   const listings = allListings.filter((listing) => !hiddenListingIds.has(listing.id))
   const flat = flats.find((item) => item.id === String(flatId))
   if (!flat) notFound()
@@ -85,6 +90,9 @@ async function FlatDetail({ id }: { id: string }) {
                     </div>
                     <div className="text-right">
                       <p className={`text-lg font-bold ${isValid ? "text-slate-900" : "text-slate-400"}`}>{listing.cleanPrice !== null ? <>{formatMnt(listing.cleanPrice)}<span className="text-xs font-medium text-slate-500"> /сар</span></> : "Тохиролцоно"}</p>
+                      {listing.previousPrice !== null && listing.cleanPrice !== null && listing.previousPrice > listing.cleanPrice && (
+                        <p className="text-xs font-semibold text-rose-700">↓ Үнэ буурсан · <s className="font-normal">{formatMnt(listing.previousPrice)}</s></p>
+                      )}
                       {difference !== null && difference > 0 && <p className="text-xs font-semibold text-amber-700">+{formatMnt(difference)} илүү</p>}
                     </div>
                   </div>
@@ -97,8 +105,9 @@ async function FlatDetail({ id }: { id: string }) {
               )
             })}
           </ol>
-          
         </section>
+
+        <MarketComparison flat={flat} market={market} />
       </div>
 
       <aside className="h-fit space-y-4 lg:sticky lg:top-6">
@@ -106,6 +115,11 @@ async function FlatDetail({ id }: { id: string }) {
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Хамгийн хямд үнэ</p>
           <p className="mt-1 text-3xl font-bold tracking-tight text-slate-900">{cheapest !== null ? formatMnt(cheapest) : "Тохиролцоно"}</p>
           {cheapest !== null ? <p className="text-sm text-slate-500">сард</p> : <p className="mt-1 text-sm text-slate-500">Үнийг зар тавигчтай тохиролцоно.</p>}
+          {flat.previousPrice !== null && flat.price !== null && (
+            <p className="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-900">
+              <b>↓ Үнэ буурсан:</b> <s>{formatMnt(flat.previousPrice)}</s> → {formatMnt(flat.price)} ({Math.round((1 - flat.price / flat.previousPrice) * 100)}% хямдарсан)
+            </p>
+          )}
           {cheapest !== null && priciest !== null && priciest > cheapest && (
             <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
               Зарын үнэ {formatMnt(cheapest)} – {formatMnt(priciest)}. Хамгийн хямдыг сонговол сард <b>{formatMnt(priciest - cheapest)}</b> хэмнэнэ.
@@ -115,6 +129,46 @@ async function FlatDetail({ id }: { id: string }) {
         <FairPriceCard flat={flat} />
       </aside>
     </div>
+  )
+}
+
+/** This flat against comparable listings: ₮/m² spread now, and the median over time. */
+function MarketComparison({ flat, market }: { flat: Flat; market: MarketListing[] }) {
+  const sameRooms = market.filter((item) => item.district === flat.district && item.rooms === flat.rooms)
+  const group = sameRooms.length >= 5 || flat.rooms === null ? sameRooms : market.filter((item) => item.district === flat.district)
+  const groupLabel = group === sameRooms && flat.rooms !== null ? `${flat.district}, ${flat.rooms} өрөө` : `${flat.district}, бүх өрөө`
+  const unit = trendUnit(market)
+  return (
+    <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="trend-heading">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="trend-heading" className="text-lg font-bold tracking-tight text-slate-900">Зах зээлтэй харьцуулахад</h2>
+        <Link href={`/market?district=${encodeURIComponent(flat.district)}${flat.rooms ? `&rooms=${flat.rooms}` : ""}`} className="text-sm font-semibold text-emerald-800 hover:text-emerald-950">Зах зээлийн тойм →</Link>
+      </div>
+      <h3 className="mt-3 text-sm font-semibold text-slate-800">₮/м² тархалт: {groupLabel}</h3>
+      <div className="mt-2">
+        <PriceSpread
+          title={`${groupLabel} заруудын ₮/м²`}
+          values={group.map((item) => ({ id: item.id, perM2: item.perM2 }))}
+          median={median(group.map((item) => item.perM2))}
+          highlight={flat.pricePerM2 !== null ? { label: `Энэ байр ${Math.round(flat.pricePerM2 / 1000)}k`, perM2: flat.pricePerM2 } : undefined}
+        />
+      </div>
+      <h3 className="mt-5 text-sm font-semibold text-slate-800">Медиан ₮/м² — {unit === "day" ? "өдөр" : "7 хоног"} бүрээр</h3>
+      <div className="mt-2">
+        <TrendChart
+          unit={unit}
+          metric="medianPerM2"
+          title={`${flat.district} дүүргийн медиан ₮/м²`}
+          series={[
+            { label: groupLabel, color: "#059669", points: priceTrend(group, {}, unit) },
+            ...(group === sameRooms && flat.rooms !== null
+              ? [{ label: `${flat.district}, бүх өрөө`, color: "#94a3b8", points: priceTrend(market, { district: flat.district }, unit) }]
+              : [{ label: "Улаанбаатар", color: "#cbd5e1", points: priceTrend(market, {}, unit) }]),
+          ]}
+          reference={flat.pricePerM2 !== null ? { label: `Энэ байр ${formatMnt(flat.pricePerM2)}/м²`, value: flat.pricePerM2 } : undefined}
+        />
+      </div>
+    </section>
   )
 }
 

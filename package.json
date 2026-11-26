@@ -9,6 +9,7 @@
     "lint": "eslint",
     "data:clean": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/clean-unegui-csv.ts",
     "data:photos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/download-photos.ts",
+    "data:price-drops": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/backfill-price-drops.ts",
     "db:seed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/seed-rentals.ts",
     "db:migrate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/migrate.ts",
     "scrape": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/scrape-unegui.ts"

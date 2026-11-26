@@ -105,11 +105,15 @@ try {
         const status = parsed.status === "needs_review" ? "needs_review" : "active"
         statuses[status] = (statuses[status] ?? 0) + 1
         const area = listing.area ?? flat.area
+        // The crossed-out old price on a discounted ad → "Үнэ буурсан" (only a real drop is kept).
+        const before = listing.previousRawPrice ? parseRentPrice(listing.previousRawPrice).amount : null
+        const previousPrice = before !== null && parsed.amount !== null && before > parsed.amount ? before : null
         const [{ id }] = await tx`
-          INSERT INTO listings (flat_id, source_url, source, title, raw_description, raw_price, clean_price,
+          INSERT INTO listings (flat_id, source_url, source, title, raw_description, raw_price, clean_price, previous_price, price_changed_at,
                                 district, rooms, area, image_url, photo_refs, status, deal_type, address, created_at)
           VALUES (${flatId}, ${listing.sourceUrl}, 'unegui', ${stripPhoneNumbers(listing.title)}, NULL,
-                  ${listing.rawPrice}, ${parsed.amount}, ${district}, ${listing.rooms}, ${area}, ${gallery(listing)},
+                  ${listing.rawPrice}, ${parsed.amount}, ${previousPrice}, ${previousPrice === null ? null : postedAt},
+                  ${district}, ${listing.rooms}, ${area}, ${gallery(listing)},
                   ${listing.photoRefs.join(",") || null}, ${status}, 'rent', ${listing.place}, ${postedAt})
           RETURNING id`
         priced.push({ id, district, rooms: listing.rooms, priceType: "rent", price: status === "active" ? parsed.amount : null, area, createdAt: postedAt })

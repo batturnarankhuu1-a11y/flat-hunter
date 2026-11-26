@@ -23,6 +23,11 @@ export type Flat = {
   image: string
   address: string
   postedAt: string
+  /** ISO date of the newest public listing (for "new since" alerts). */
+  latestAt: string | null
+  /** Price of the cheapest listing before its last change, when it was higher → "Үнэ буурсан". */
+  previousPrice: number | null
+  priceChangedAt: string | null
   sourcesCount: number
 }
 

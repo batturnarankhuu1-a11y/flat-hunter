@@ -26,6 +26,11 @@ export function formatPostedAt(value: Date | string | null): string {
     : "Огноо тодорхойгүй"
 }
 
+function toIso(value: Date | string | null): string | null {
+  const date = value === null ? null : new Date(value)
+  return date && !Number.isNaN(date.getTime()) ? date.toISOString() : null
+}
+
 const NO_PRICE: FairPriceResult = { badge: "missing", pricePerM2: null, benchmarkPerM2: null, deviation: null, sampleSize: 0 }
 const loggedOutliers = new Set<number>()
 
@@ -65,7 +70,7 @@ export async function loadRentalCatalogue(): Promise<RentalCatalogue> {
   // and a flat whose every public listing is an outlier is not shown at all.
   const hiddenListingIds = new Set(skipped.map((item) => item.id))
   const outliersByFlat = new Map<number, number>()
-  const cheapestVisible = new Map<number, { id: number; price: number }>()
+  const cheapestVisible = new Map<number, { id: number; price: number; previousPrice: number | null; priceChangedAt: Date | null }>()
   for (const listing of priced) {
     if (listing.flatId === null || listing.cleanPrice === null) continue
     if (hiddenListingIds.has(listing.id)) {
@@ -73,7 +78,15 @@ export async function loadRentalCatalogue(): Promise<RentalCatalogue> {
       continue
     }
     const best = cheapestVisible.get(listing.flatId)
-    if (!best || listing.cleanPrice < best.price || (listing.cleanPrice === best.price && listing.id < best.id)) cheapestVisible.set(listing.flatId, { id: listing.id, price: listing.cleanPrice })
+    if (!best || listing.cleanPrice < best.price || (listing.cleanPrice === best.price && listing.id < best.id)) {
+      const dropped = listing.previousPrice !== null && listing.previousPrice > listing.cleanPrice
+      cheapestVisible.set(listing.flatId, {
+        id: listing.id,
+        price: listing.cleanPrice,
+        previousPrice: dropped ? listing.previousPrice : null,
+        priceChangedAt: dropped && listing.priceChangedAt ? new Date(listing.priceChangedAt) : null,
+      })
+    }
   }
 
   const visibleRows = rows.filter((row) => (outliersByFlat.get(row.id) ?? 0) < row.sourcesCount)
@@ -99,6 +112,9 @@ export async function loadRentalCatalogue(): Promise<RentalCatalogue> {
       image: row.imageUrl?.trim() || PLACEHOLDER_IMAGE,
       address: row.address ? `${district}, ${row.address}` : district,
       postedAt: formatPostedAt(row.latestListingAt ?? row.createdAt),
+      latestAt: toIso(row.latestListingAt ?? row.createdAt),
+      previousPrice: cheapest?.previousPrice ?? null,
+      priceChangedAt: cheapest?.priceChangedAt?.toISOString() ?? null,
       sourcesCount: row.sourcesCount - (outliersByFlat.get(row.id) ?? 0),
     }
   })

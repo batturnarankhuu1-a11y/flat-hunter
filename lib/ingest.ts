@@ -156,9 +156,15 @@ export async function ingestListings(inputs: unknown[]): Promise<IngestResult[]>
       source: "unegui",
     }
 
-    const [existing] = await db.select({ id: listings.id, flatId: listings.flatId }).from(listings).where(eq(listings.sourceUrl, input.sourceUrl)).limit(1)
+    const [existing] = await db.select({ id: listings.id, flatId: listings.flatId, cleanPrice: listings.cleanPrice }).from(listings).where(eq(listings.sourceUrl, input.sourceUrl)).limit(1)
     if (existing?.flatId) {
-      await db.update(listings).set(listingFields).where(eq(listings.id, existing.id))
+      // Keep the flat's photos (imageUrl) on updates; remember the old price when it changes ("Үнэ буурсан").
+      const { imageUrl: _keepPhotos, ...updateFields } = listingFields
+      void _keepPhotos
+      const priceChanged = existing.cleanPrice !== null && price.amount !== null && price.amount !== existing.cleanPrice
+      await db.update(listings)
+        .set({ ...updateFields, ...(priceChanged ? { previousPrice: existing.cleanPrice, priceChangedAt: new Date() } : {}) })
+        .where(eq(listings.id, existing.id))
       results.push({ index, status: "updated", listingId: existing.id, flatId: existing.flatId, price })
       continue
     }
