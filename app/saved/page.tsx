@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { connection } from "next/server"
 import { auth } from "@clerk/nextjs/server"
 import { desc, eq } from "drizzle-orm"
 import { savedSearches } from "@/db/schema"
@@ -30,6 +31,8 @@ export default function SavedPage() {
 const timeFormat = new Intl.DateTimeFormat("mn-MN", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Ulaanbaatar" })
 
 async function Saved() {
+  // Per-user data from the database: always render at request time, never prerender.
+  await connection()
   const { userId } = await auth()
   if (!userId) {
     return (

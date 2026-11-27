@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { connection } from "next/server"
 import { auth } from "@clerk/nextjs/server"
 import PostListingForm from "@/components/PostListingForm"
 
@@ -22,6 +23,7 @@ export default function PostPage({ searchParams }: PageProps<"/post">) {
 }
 
 async function Post({ params }: { params: Record<string, string | string[] | undefined> }) {
+  await connection()
   const { userId } = await auth()
   if (!userId) {
     return (

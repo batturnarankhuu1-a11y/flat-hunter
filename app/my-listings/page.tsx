@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { connection } from "next/server"
 import { auth } from "@clerk/nextjs/server"
 import MyListingActions from "@/components/MyListingActions"
 import { ensureSchema, getDb } from "@/lib/db"
@@ -36,6 +37,8 @@ export default function MyListingsPage() {
 }
 
 async function Mine() {
+  // Per-user data from the database: always render at request time, never prerender.
+  await connection()
   const { userId } = await auth()
   if (!userId) {
     return <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-700">Зараа харахын тулд нэвтэрнэ үү. <Link href="/sign-in?redirect_url=/my-listings" className="font-semibold text-emerald-800 underline">Нэвтрэх</Link></div>
