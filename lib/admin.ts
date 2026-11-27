@@ -9,14 +9,14 @@ import { ensureSchema, getDb } from "@/lib/db"
  * With neither set, any signed-in user is admin in development only (the page shows a warning);
  * in production the admin stays closed until one of them is configured.
  */
-export async function adminAccess(): Promise<{ allowed: boolean; userId: string | null; reason?: string; devOpen?: boolean }> {
+export async function adminAccess(): Promise<{ allowed: boolean; userId: string | null; reason?: string; reasonEn?: string; devOpen?: boolean }> {
   const { userId } = await auth()
-  if (!userId) return { allowed: false, userId: null, reason: "Нэвтэрнэ үү." }
+  if (!userId) return { allowed: false, userId: null, reason: "Нэвтэрнэ үү.", reasonEn: "Please sign in." }
   const ids = (process.env.ADMIN_USER_IDS ?? "").split(",").map((value) => value.trim()).filter(Boolean)
   const emails = (process.env.ADMIN_EMAILS ?? "").split(",").map((value) => value.trim().toLowerCase()).filter(Boolean)
   if (ids.length === 0 && emails.length === 0) {
     return process.env.NODE_ENV === "production"
-      ? { allowed: false, userId, reason: "Админ тохируулаагүй байна: ADMIN_EMAILS эсвэл ADMIN_USER_IDS-ийг тохируулна уу." }
+      ? { allowed: false, userId, reason: "Админ тохируулаагүй байна: ADMIN_EMAILS эсвэл ADMIN_USER_IDS-ийг тохируулна уу.", reasonEn: "No admin is configured: set ADMIN_EMAILS or ADMIN_USER_IDS." }
       : { allowed: true, userId, devOpen: true }
   }
   if (ids.includes(userId)) return { allowed: true, userId }
@@ -24,7 +24,7 @@ export async function adminAccess(): Promise<{ allowed: boolean; userId: string 
     const user = await currentUser()
     if (user?.emailAddresses.some((address) => emails.includes(address.emailAddress.toLowerCase()))) return { allowed: true, userId }
   }
-  return { allowed: false, userId, reason: "Энэ хуудас зөвхөн админд нээлттэй." }
+  return { allowed: false, userId, reason: "Энэ хуудас зөвхөн админд нээлттэй.", reasonEn: "This page is for admins only." }
 }
 
 const adminListingColumns = {

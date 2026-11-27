@@ -1,6 +1,7 @@
 import { Suspense } from "react"
 import { connection } from "next/server"
 import FlatBrowser from "@/components/FlatBrowser"
+import T from "@/components/T"
 import type { Flat } from "@/components/types"
 import { loadRentalFlats } from "@/lib/flats"
 
@@ -10,11 +11,11 @@ async function LiveFlats() {
   await connection()
 
   let flats: Flat[] = []
-  let loadError: string | undefined
+  let loadError: React.ReactNode
   try {
     flats = await loadRentalFlats()
   } catch {
-    loadError = "Түрээсийн байрны мэдээллийг одоогоор ачаалж чадсангүй. Түр хүлээгээд хуудсыг дахин ачаална уу."
+    loadError = <T mn="Түрээсийн байрны мэдээллийг одоогоор ачаалж чадсангүй. Түр хүлээгээд хуудсыг дахин ачаална уу." en="Could not load the rental listings right now. Please wait a moment and reload the page." />
   }
 
   return <FlatBrowser flats={flats} loadError={loadError} />
@@ -25,9 +26,9 @@ function LoadingState() {
     <main className="min-h-screen flex-1 bg-[#f6f8f7]">
       <section className="bg-[#102c27] text-white">
         <div className="mx-auto max-w-7xl px-5 py-11 sm:px-8 sm:py-14">
-          <p className="text-xs font-medium text-emerald-200">Улаанбаатар хотын түрээсийн байр</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">Түрээсийн байраа <span className="text-emerald-300">хямд олоорой.</span></h1>
-          <p className="mt-3 max-w-xl text-sm text-emerald-50/75">Түрээсийн байрны мэдээлэл ачаалж байна…</p>
+          <p className="text-xs font-medium text-emerald-200"><T mn="Улаанбаатар хотын түрээсийн байр" en="Rental flats in Ulaanbaatar" /></p>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl"><T mn={<>Түрээсийн байраа <span className="text-emerald-300">хямд олоорой.</span></>} en={<>Find your rental <span className="text-emerald-300">for less.</span></>} /></h1>
+          <p className="mt-3 max-w-xl text-sm text-emerald-50/75"><T mn="Түрээсийн байрны мэдээлэл ачаалж байна…" en="Loading rental listings…" /></p>
         </div>
       </section>
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -36,7 +37,7 @@ function LoadingState() {
           <div className="h-10 animate-pulse rounded-lg bg-slate-100" />
           <div className="h-10 animate-pulse rounded-lg bg-slate-100" />
         </div>
-        <div className="py-10 text-sm text-slate-500">Шинэ заруудыг хайж байна…</div>
+        <div className="py-10 text-sm text-slate-500"><T mn="Шинэ заруудыг хайж байна…" en="Looking for new listings…" /></div>
       </div>
     </main>
   )

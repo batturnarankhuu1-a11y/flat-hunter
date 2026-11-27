@@ -1,6 +1,7 @@
 import { chatReply, EMPTY_CONTEXT, type ChatContext } from "@/lib/chat"
 import { DISTRICTS, type District } from "@/lib/districts"
 import { loadRentalFlats } from "@/lib/flats"
+import { parseLocale, requestLocale, tr } from "@/lib/i18n"
 
 const MAX_MESSAGE_LENGTH = 300
 
@@ -24,22 +25,24 @@ function readContext(value: unknown): ChatContext {
 }
 
 /**
- * POST /api/chat  { "message": "Хан-Уулд тавилгатай 3 өрөө байна уу?", "context": <context from the last reply> }
- * → { intent, reply, flats (≤ 3), total, context, suggestions } — friendly Mongolian, from our own listings only.
+ * POST /api/chat  { "message": "Хан-Уулд тавилгатай 3 өрөө байна уу?", "context": <context from the last reply>, "locale"?: "mn" | "en" }
+ * → { intent, reply, flats (≤ 3), total, context, suggestions } — friendly Mongolian or English (body locale,
+ * else the fh-lang cookie), from our own listings only.
  */
 export async function POST(request: Request): Promise<Response> {
   let body: Record<string, unknown>
   try {
     body = await request.json()
   } catch {
-    return Response.json({ error: "JSON body required" }, { status: 400 })
+    return Response.json({ error: tr(requestLocale(request), "JSON бие шаардлагатай", "JSON body required") }, { status: 400 })
   }
+  const locale = body.locale === "en" || body.locale === "mn" ? parseLocale(body.locale) : requestLocale(request)
   const message = typeof body.message === "string" ? body.message.trim() : ""
-  if (!message) return Response.json({ error: "Мессежээ бичнэ үү" }, { status: 400 })
-  if (message.length > MAX_MESSAGE_LENGTH) return Response.json({ error: `${MAX_MESSAGE_LENGTH} тэмдэгтээс ихгүй бичнэ үү` }, { status: 400 })
+  if (!message) return Response.json({ error: tr(locale, "Мессежээ бичнэ үү", "Please type a message") }, { status: 400 })
+  if (message.length > MAX_MESSAGE_LENGTH) return Response.json({ error: tr(locale, `${MAX_MESSAGE_LENGTH} тэмдэгтээс ихгүй бичнэ үү`, `Please keep it under ${MAX_MESSAGE_LENGTH} characters`) }, { status: 400 })
   try {
-    return Response.json(chatReply(message, readContext(body.context), await loadRentalFlats()))
+    return Response.json(chatReply(message, readContext(body.context), await loadRentalFlats(), locale))
   } catch {
-    return Response.json({ error: "Байрны мэдээллийг ачаалж чадсангүй. Түр хүлээгээд дахин бичээрэй." }, { status: 503 })
+    return Response.json({ error: tr(locale, "Байрны мэдээллийг ачаалж чадсангүй. Түр хүлээгээд дахин бичээрэй.", "Couldn't load the listings. Please wait a moment and try again.") }, { status: 503 })
   }
 }

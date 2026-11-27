@@ -1,4 +1,5 @@
 import type { Flat } from "@/components/types"
+import { districtName, formatMillionsIn, roomsLabel, type Locale } from "@/lib/i18n"
 
 /**
  * Saved-search alerts, computed from the current catalogue:
@@ -60,8 +61,12 @@ export function nextDailyDigest(now = new Date()): Date {
   return new Date(nine > now.getTime() ? nine : nine + 86_400_000)
 }
 
-export function describeSearch(search: Pick<SavedSearch, "district" | "rooms" | "maxPrice">): string {
-  const parts = [search.district ?? "Бүх дүүрэг", search.rooms !== null ? `${search.rooms} өрөө` : "бүх өрөө"]
-  if (search.maxPrice !== null) parts.push(`${Number((search.maxPrice / 1_000_000).toFixed(2))} сая ₮ хүртэл`)
+export function describeSearch(search: Pick<SavedSearch, "district" | "rooms" | "maxPrice">, locale: Locale = "mn"): string {
+  const en = locale === "en"
+  const parts = [
+    search.district ? districtName(search.district, locale) : en ? "All districts" : "Бүх дүүрэг",
+    search.rooms !== null ? roomsLabel(search.rooms, locale) : en ? "any rooms" : "бүх өрөө",
+  ]
+  if (search.maxPrice !== null) parts.push(en ? `up to ${formatMillionsIn(search.maxPrice, "en")}` : `${formatMillionsIn(search.maxPrice, "mn")} хүртэл`)
   return parts.join(", ")
 }

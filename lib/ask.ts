@@ -1,5 +1,5 @@
 import type { Flat } from "@/components/types"
-import type { District } from "@/lib/districts"
+import { DISTRICT_EN } from "@/lib/i18n"
 import { matchesFilters, parseSearchQuery, type QuestionLanguage, type SearchFilters } from "@/lib/query-parser"
 import { formatMnt } from "@/lib/rent-price"
 import type { SemanticResult } from "@/lib/semantic-search"
@@ -30,10 +30,6 @@ export interface AskResponse {
 type Semantic = Pick<SemanticResult, "engine" | "terms" | "scores" | "relevant">
 const NO_SEMANTIC: Semantic = { engine: "local", terms: [], scores: new Map(), relevant: new Set() }
 
-const DISTRICT_EN: Record<District, string> = {
-  "Баянзүрх": "Bayanzurkh", "Сүхбаатар": "Sukhbaatar", "Хан-Уул": "Khan-Uul", "Чингэлтэй": "Chingeltei", "Баянгол": "Bayangol", "Сонгинохайрхан": "Songinokhairkhan",
-}
-
 /** Max listings named in the answer; the rest are in `flats`. */
 const MAX_CITED = 3
 
@@ -58,7 +54,7 @@ function criteria(filters: SearchFilters, language: QuestionLanguage, keywords: 
 }
 
 function place(flat: Flat, language: QuestionLanguage): string {
-  const district = language === "en" ? DISTRICT_EN[flat.district as District] ?? flat.district : flat.district
+  const district = language === "en" ? DISTRICT_EN[flat.district as keyof typeof DISTRICT_EN] ?? flat.district : flat.district
   return flat.complex ? `${district}, ${flat.complex}` : district
 }
 
@@ -122,9 +118,13 @@ export function composeAnswer(
  *                                          (if none are, the words are ignored), cheapest first
  *   only words ("River garden-д байр")   → relevant flats, best match first
  *   nothing usable ("Сайн байна уу")     → UNCLEAR
+ *
+ * The answer is in `answerLanguage` (the interface language) when given, otherwise in the question's language.
  */
-export function answerQuestion(question: string, catalogue: Flat[], semantic: Semantic = NO_SEMANTIC): AskResponse {
-  const { filters, language, understood } = parseSearchQuery(question)
+export function answerQuestion(question: string, catalogue: Flat[], semantic: Semantic = NO_SEMANTIC, answerLanguage?: QuestionLanguage): AskResponse {
+  const parsed = parseSearchQuery(question)
+  const { filters, understood } = parsed
+  const language = answerLanguage ?? parsed.language
   const listed = catalogue.filter((flat) => flat.listingId !== null && flat.price !== null)
   const relevance = (flat: Flat) => semantic.scores.get(flat.id) ?? 0
   const search = (applied: boolean) => ({ engine: semantic.engine, terms: semantic.terms, applied })

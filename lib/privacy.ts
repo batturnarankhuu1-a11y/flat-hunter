@@ -21,17 +21,18 @@ export function isExternalUrl(url: string | null | undefined): url is string {
   }
 }
 
-const PHOTO_LABELS: Record<string, string> = {
-  living: "Зочны өрөө",
-  kitchen: "Гал тогоо",
-  bedroom: "Унтлагын өрөө",
-  room: "Өрөө",
-  building: "Барилга",
+const PHOTO_LABELS: Record<string, [string, string]> = {
+  living: ["Зочны өрөө", "Living room"],
+  kitchen: ["Гал тогоо", "Kitchen"],
+  bedroom: ["Унтлагын өрөө", "Bedroom"],
+  room: ["Өрөө", "Room"],
+  building: ["Барилга", "Building"],
 }
 
-/** "/rentals/bzd-narkhan-a-1-living.webp" → "Зочны өрөө" */
-export function photoLabel(src: string): string {
-  if (src.startsWith("/samples/")) return "Жишээ зураг"
+/** "/rentals/bzd-narkhan-a-1-living.webp" → "Зочны өрөө" ("Living room" in English). */
+export function photoLabel(src: string, locale: "mn" | "en" = "mn"): string {
+  const index = locale === "en" ? 1 : 0
+  if (src.startsWith("/samples/")) return ["Жишээ зураг", "Sample photo"][index]
   const kind = src.match(/-([a-z]+)\.webp$/)?.[1]
-  return (kind && PHOTO_LABELS[kind]) || "Зураг"
+  return (kind && PHOTO_LABELS[kind]?.[index]) || ["Зураг", "Photo"][index]
 }

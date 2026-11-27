@@ -16,6 +16,7 @@ import { DISTRICTS, normalizeDistrict, type District } from "./districts.ts"
 import { computeFairPrices, type FairPriceResult } from "./fair-price.ts"
 import { stripPhoneNumbers } from "./privacy.ts"
 import { formatMnt, parseRentPrice } from "./rent-price.ts"
+import { tr, type Locale } from "./i18n.ts"
 
 export type Db = PostgresJsDatabase<typeof schema>
 
@@ -43,25 +44,27 @@ type Validation = { ok: true; value: OwnerListingInput } | { ok: false; error: s
 
 const text = (value: unknown, max: number) => (typeof value === "string" && value.trim() ? stripPhoneNumbers(value.trim().replace(/\s+/g, " ")).slice(0, max) : null)
 
-export function validateOwnerListing(input: unknown): Validation {
-  if (typeof input !== "object" || input === null) return { ok: false, error: "Мэдээлэл дутуу байна" }
+/** Error messages are in `locale` (Mongolian by default). */
+export function validateOwnerListing(input: unknown, locale: Locale = "mn"): Validation {
+  const fail = (mn: string, en: string): Validation => ({ ok: false, error: tr(locale, mn, en) })
+  if (typeof input !== "object" || input === null) return fail("Мэдээлэл дутуу байна", "Some details are missing")
   const raw = input as Record<string, unknown>
   const title = text(raw.title, 120)
-  if (!title || title.length < 5) return { ok: false, error: "Гарчиг 5-аас доошгүй тэмдэгт байна" }
+  if (!title || title.length < 5) return fail("Гарчиг 5-аас доошгүй тэмдэгт байна", "The title needs at least 5 characters")
   const district = typeof raw.district === "string" ? normalizeDistrict(raw.district) : null
-  if (!district || !DISTRICTS.includes(district)) return { ok: false, error: "Дүүргээ сонгоно уу" }
+  if (!district || !DISTRICTS.includes(district)) return fail("Дүүргээ сонгоно уу", "Please choose a district")
   const rooms = Number(raw.rooms)
-  if (!Number.isInteger(rooms) || rooms < 1 || rooms > 8) return { ok: false, error: "Өрөөний тоо 1–8" }
+  if (!Number.isInteger(rooms) || rooms < 1 || rooms > 8) return fail("Өрөөний тоо 1–8", "Rooms must be 1–8")
   const area = Number(raw.area)
-  if (!Number.isFinite(area) || area < 10 || area > 600) return { ok: false, error: "Талбай 10–600 м²" }
+  if (!Number.isFinite(area) || area < 10 || area > 600) return fail("Талбай 10–600 м²", "Area must be 10–600 m²")
   const parsed = parseRentPrice(typeof raw.price === "number" ? raw.price : typeof raw.price === "string" ? raw.price : null)
-  if (parsed.amount === null || (parsed.status !== "valid" && parsed.status !== "needs_review")) return { ok: false, error: "Сарын түрээсээ ₮-өөр бичнэ үү (ж: 2500000 эсвэл 2.5 сая)" }
+  if (parsed.amount === null || (parsed.status !== "valid" && parsed.status !== "needs_review")) return fail("Сарын түрээсээ ₮-өөр бичнэ үү (ж: 2500000 эсвэл 2.5 сая)", "Enter the monthly rent in ₮ (e.g. 2500000 or 2.5 сая)")
   const paymentTerms = text(raw.paymentTerms, 30)
-  if (paymentTerms && !/^[\p{L}\p{N}+\-–.,/ ]+$/u.test(paymentTerms)) return { ok: false, error: "Төлбөрийн нөхцөл: жишээ нь 3+1" }
+  if (paymentTerms && !/^[\p{L}\p{N}+\-–.,/ ]+$/u.test(paymentTerms)) return fail("Төлбөрийн нөхцөл: жишээ нь 3+1", "Payment terms: for example 3+1")
   const images = Array.isArray(raw.images) ? raw.images.filter((item): item is string => typeof item === "string") : []
-  if (images.length === 0) return { ok: false, error: "Дор хаяж нэг зураг оруулах эсвэл жишээ зураг сонгоно уу" }
-  if (images.length > MAX_PHOTOS) return { ok: false, error: `${MAX_PHOTOS}-аас ихгүй зураг` }
-  if (images.some((image) => !PHOTO_URL.test(image) && !(SAMPLE_IMAGES as readonly string[]).includes(image))) return { ok: false, error: "Зургийн холбоос буруу" }
+  if (images.length === 0) return fail("Дор хаяж нэг зураг оруулах эсвэл жишээ зураг сонгоно уу", "Upload at least one photo or pick a sample image")
+  if (images.length > MAX_PHOTOS) return fail(`${MAX_PHOTOS}-аас ихгүй зураг`, `No more than ${MAX_PHOTOS} photos`)
+  if (images.some((image) => !PHOTO_URL.test(image) && !(SAMPLE_IMAGES as readonly string[]).includes(image))) return fail("Зургийн холбоос буруу", "Invalid photo link")
   return {
     ok: true,
     value: {
