@@ -29,6 +29,7 @@ export default function FlatCard({ flat }: { flat: Flat }) {
         </Link>
         <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-white/95 px-2.5 py-1 text-xs font-bold text-slate-700 shadow-sm">{flat.district}</span>
         <div className="pointer-events-none absolute right-3 top-3 flex flex-col items-end gap-1">
+          {flat.ownerListing && <span className="rounded-md bg-amber-500 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">★ Эзэмшигчийн зар</span>}
           {flat.previousPrice !== null && <span className="rounded-md bg-rose-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">↓ Үнэ буурсан</span>}
           {flat.sourcesCount > 1 && <span className="rounded-md bg-indigo-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm">{flat.sourcesCount} зар нэгтгэсэн</span>}
         </div>

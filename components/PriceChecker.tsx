@@ -81,6 +81,9 @@ export default function PriceChecker() {
 
           <p className="mt-4 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">{LEVEL_NOTE[result.level]} Бүлэг: {result.label}, {result.sampleSize} зар. Хүрээ = м² үнийн 25–75 хувь × таны талбай. Зөвлөгөө биш, зөвхөн чиглэл.</p>
 
+          <Link href={`/post?${new URLSearchParams({ district: result.input.district, rooms: String(result.input.rooms), area: String(result.input.area), price: String(result.rent.median) })}`}
+            className="mt-4 inline-flex rounded-lg bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">Энэ үнээр зар тавих →</Link>
+
           <h2 className="mt-5 text-sm font-semibold text-slate-900">Хэмжээгээрээ хамгийн ойр зарууд</h2>
           <ul className="mt-2 divide-y divide-slate-100 text-sm">
             {result.comparables.map((item) => (

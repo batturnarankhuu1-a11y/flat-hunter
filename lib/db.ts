@@ -105,6 +105,7 @@ export async function getRentalFlatRows() {
         imageUrl: sql<string | null>`(array_agg(${listings.imageUrl} ORDER BY ${cheapestFirst}))[1]`,
         latestListingAt: sql<Date | string | null>`max(${listings.createdAt})`,
         sourcesCount: sql<number>`count(${listings.id})::int`,
+        ownerListing: sql<boolean>`coalesce(bool_or(${listings.source} = 'user'), false)`,
       })
       .from(flats)
       .innerJoin(listings, and(eq(listings.flatId, flats.id), eq(listings.dealType, "rent"), isPublicListing))
@@ -137,6 +138,8 @@ const listingColumns = {
   imageUrl: listings.imageUrl,
   status: listings.status,
   source: listings.source,
+  paymentTerms: listings.paymentTerms,
+  furnished: listings.furnished,
   sourceUrl: listings.sourceUrl,
   createdAt: listings.createdAt,
 }

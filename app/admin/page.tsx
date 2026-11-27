@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { connection } from "next/server"
 import AdminListingActions from "@/components/AdminListingActions"
-import { adminAccess, getAdminListings, getListingsById, getMultiListingFlats, type AdminListing } from "@/lib/admin"
+import { adminAccess, getAdminListings, getListingsById, getMultiListingFlats, getOwnerListings, type AdminListing } from "@/lib/admin"
 import { loadRentalCatalogue } from "@/lib/flats"
 import { formatMnt, parseRentPrice } from "@/lib/rent-price"
 
@@ -36,7 +36,7 @@ async function Admin() {
       </div>
     )
   }
-  const [review, catalogue, multi] = await Promise.all([getAdminListings(["needs_review", "inactive"]), loadRentalCatalogue(), getMultiListingFlats()])
+  const [review, catalogue, multi, owners] = await Promise.all([getAdminListings(["needs_review", "inactive"]), loadRentalCatalogue(), getMultiListingFlats(), getOwnerListings()])
   const outliers = await getListingsById([...catalogue.hiddenListingIds])
   const needsReview = review.filter((listing) => listing.status === "needs_review")
   const hidden = review.filter((listing) => listing.status === "inactive")
@@ -66,6 +66,14 @@ async function Admin() {
         {needsReview.length === 0 ? <Empty /> : needsReview.map((listing) => (
           <Row key={listing.id} listing={listing}>
             <AdminListingActions id={listing.id} status={listing.status ?? "needs_review"} needsPrice={listing.cleanPrice !== null && parseRentPrice(listing.cleanPrice).status !== "valid"} />
+          </Row>
+        ))}
+      </Section>
+
+      <Section title="Эзэмшигчийн зарууд" note="Хэрэглэгчид өөрсдөө нэмсэн зарууд (сүүлийн 50). Зохисгүй бол нуух.">
+        {owners.length === 0 ? <Empty /> : owners.map((listing) => (
+          <Row key={listing.id} listing={listing}>
+            <AdminListingActions id={listing.id} status={listing.status ?? "active"} needsPrice={listing.cleanPrice !== null && parseRentPrice(listing.cleanPrice).status !== "valid"} />
           </Row>
         ))}
       </Section>

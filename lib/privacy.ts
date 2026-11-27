@@ -31,6 +31,7 @@ const PHOTO_LABELS: Record<string, string> = {
 
 /** "/rentals/bzd-narkhan-a-1-living.webp" → "Зочны өрөө" */
 export function photoLabel(src: string): string {
+  if (src.startsWith("/samples/")) return "Жишээ зураг"
   const kind = src.match(/-([a-z]+)\.webp$/)?.[1]
   return (kind && PHOTO_LABELS[kind]) || "Зураг"
 }

@@ -52,7 +52,7 @@ async function FlatDetail({ id }: { id: string }) {
 
         <div className="mt-6 flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-emerald-700">{flat.district} дүүрэг · Түрээс</p>
+            <p className="text-sm font-semibold text-emerald-700">{flat.district} дүүрэг · Түрээс{flat.ownerListing && <span className="ml-2 rounded-md bg-amber-500 px-2 py-0.5 text-xs font-bold text-white">★ Эзэмшигчийн зар</span>}</p>
             <h1 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{flat.title}</h1>
             <p className="mt-2 text-sm text-slate-500">{flat.address}</p>
           </div>
