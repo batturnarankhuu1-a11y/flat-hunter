@@ -1,8 +1,39 @@
 @import "tailwindcss";
+@import "./dark.css";
+
+/* `dark:` utilities follow the header switch (data-theme on <html>), not only the OS setting. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
   --background: #f6f8f7;
   --foreground: #0f172a;
+  /* Chart colours (TrendChart, PriceSpread): use the .chart-* classes below. */
+  --chart-grid: #e2e8f0;
+  --chart-label: #64748b;
+  --chart-ink: #0f172a;
+  --chart-dot: #ffffff;
+  --chart-reference: #b45309;
+  /* Clerk sign-in / user menu (appearance.variables in app/layout.tsx). */
+  --clerk-background: #ffffff;
+  --clerk-input: #f8fafc;
+  --clerk-foreground: #102c27;
+  --clerk-muted: #64748b;
+  --clerk-border: #e2e8f0;
+}
+
+:root[data-theme=dark] {
+  --background: #0b1210;
+  --foreground: #e2e8f0;
+  --chart-grid: #2a3835;
+  --chart-label: #9aa8b8;
+  --chart-ink: #f1f5f9;
+  --chart-dot: #111a18;
+  --chart-reference: #fbbf24;
+  --clerk-background: #111a18;
+  --clerk-input: #1a2523;
+  --clerk-foreground: #f1f5f9;
+  --clerk-muted: #9aa8b8;
+  --clerk-border: #2a3835;
 }
 
 @theme inline {
@@ -19,3 +50,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* <T mn en />: both languages are in the HTML, <html lang> decides which one is shown. */
+html[lang="en"] [data-lang="mn"],
+html:not([lang="en"]) [data-lang="en"] { display: none; }
+
+.chart-grid { stroke: var(--chart-grid); }
+.chart-label { fill: var(--chart-label); }
+.chart-ink { fill: var(--chart-ink); }
+.chart-ink-stroke { stroke: var(--chart-ink); }
+.chart-dot { fill: var(--chart-dot); }
+.chart-dot-stroke { stroke: var(--chart-dot); }
+.chart-reference { fill: var(--chart-reference); }

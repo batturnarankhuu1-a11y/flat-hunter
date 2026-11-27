@@ -64,12 +64,13 @@ export function ensureSchema(): Promise<void> {
   return globalForDatabase.flatHunterSchemaCheck
 }
 
-function logQueryError(label: string, startedAt: number, error: unknown) {
+/** Log a failed query without the connection string. No timing: Date.now() is not allowed while prerendering (Cache Components). */
+function logQueryError(label: string, error: unknown) {
   const errorName = error instanceof Error ? error.name : "UnknownError"
   const errorMessage = (error instanceof Error ? error.message : String(error))
     .replace(/postgres(?:ql)?:\/\/[^\s@]+@/gi, "postgresql://[redacted]@")
     .slice(0, 500)
-  console.error(`[flat-hunter] ${label} failed after ${Date.now() - startedAt}ms (${errorName}): ${errorMessage}`)
+  console.error(`[flat-hunter] ${label} failed (${errorName}): ${errorMessage}`)
 }
 
 // Valid (reviewed) prices first, then needs_review, then "тохиролцоно"; cheapest within each.
@@ -87,7 +88,6 @@ const cheapestFirst = sql`(${listings.status} = 'active') DESC, ${listings.clean
  * listings, so needs_review prices ("120 сая", "850,000₮") never become a flat's price.
  */
 export async function getRentalFlatRows() {
-  const startedAt = Date.now()
   try {
     await ensureSchema()
     const rows = await getDb()
@@ -113,10 +113,10 @@ export async function getRentalFlatRows() {
       .groupBy(flats.id)
       .orderBy(desc(sql`max(${listings.createdAt})`), desc(flats.id))
 
-    console.info(`[flat-hunter] rental flats query loaded ${rows.length} flats in ${Date.now() - startedAt}ms`)
+    console.info(`[flat-hunter] rental flats query loaded ${rows.length} flats`)
     return rows
   } catch (error) {
-    logQueryError("rental flats query", startedAt, error)
+    logQueryError("rental flats query", error)
     throw error
   }
 }
@@ -148,7 +148,6 @@ export type ListingRow = Awaited<ReturnType<typeof getFlatListings>>[number]
 
 /** All listings for one flat: valid prices cheapest first, then needs_review, then "тохиролцоно". */
 export async function getFlatListings(flatId: number) {
-  const startedAt = Date.now()
   try {
     await ensureSchema()
     return await getDb()
@@ -157,14 +156,13 @@ export async function getFlatListings(flatId: number) {
       .where(and(eq(listings.flatId, flatId), eq(listings.dealType, "rent"), isPublicListing))
       .orderBy(cheapestFirst)
   } catch (error) {
-    logQueryError(`listings query for flat ${flatId}`, startedAt, error)
+    logQueryError(`listings query for flat ${flatId}`, error)
     throw error
   }
 }
 
 /** One rent listing, or null. */
 export async function getListing(listingId: number) {
-  const startedAt = Date.now()
   try {
     await ensureSchema()
     const [row] = await getDb()
@@ -174,7 +172,7 @@ export async function getListing(listingId: number) {
       .limit(1)
     return row ?? null
   } catch (error) {
-    logQueryError(`listing query ${listingId}`, startedAt, error)
+    logQueryError(`listing query ${listingId}`, error)
     throw error
   }
 }
@@ -184,7 +182,6 @@ export async function getListing(listingId: number) {
  * Inactive and needs_review listings never enter the median (spec §14).
  */
 export async function getPricedRentListings() {
-  const startedAt = Date.now()
   try {
     await ensureSchema()
     return await getDb()
@@ -202,7 +199,7 @@ export async function getPricedRentListings() {
       .from(listings)
       .where(and(eq(listings.dealType, "rent"), eq(listings.status, "active"), sql`${listings.cleanPrice} IS NOT NULL`))
   } catch (error) {
-    logQueryError("priced listings query", startedAt, error)
+    logQueryError("priced listings query", error)
     throw error
   }
 }

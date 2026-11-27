@@ -4,6 +4,7 @@ import { adminAccess } from "@/lib/admin"
 import { ensureSchema, getDb } from "@/lib/db"
 import { parseId } from "@/lib/flats"
 import { parseRentPrice } from "@/lib/rent-price"
+import { requestLocale, tr } from "@/lib/i18n"
 
 /**
  * POST /api/admin/listings/:id
@@ -13,8 +14,9 @@ import { parseRentPrice } from "@/lib/rent-price"
  *   { action: "split" }                         move the listing out of a wrongly merged flat into its own flat
  */
 export async function POST(request: Request, context: RouteContext<"/api/admin/listings/[id]">): Promise<Response> {
+  const locale = requestLocale(request)
   const access = await adminAccess()
-  if (!access.allowed) return Response.json({ error: access.reason }, { status: access.userId ? 403 : 401 })
+  if (!access.allowed) return Response.json({ error: tr(locale, access.reason, access.reasonEn) }, { status: access.userId ? 403 : 401 })
   const id = parseId((await context.params).id)
   if (id === null) return Response.json({ error: "Not found" }, { status: 404 })
 
@@ -34,10 +36,10 @@ export async function POST(request: Request, context: RouteContext<"/api/admin/l
       let price = listing.cleanPrice
       if (typeof body.price === "string" && body.price.trim()) {
         const parsed = parseRentPrice(body.price)
-        if (parsed.status !== "valid") return Response.json({ error: `“${body.price}” — сарын түрээс 1–20 сая ₮ байх ёстой` }, { status: 400 })
+        if (parsed.status !== "valid") return Response.json({ error: tr(locale, `“${body.price}” — сарын түрээс 1–20 сая ₮ байх ёстой`, `“${body.price}” — monthly rent must be 1–20M ₮`) }, { status: 400 })
         price = parsed.amount
       }
-      if (price !== null && parseRentPrice(price).status !== "valid") return Response.json({ error: "Үнэ 1–20 сая ₮-ийн гадна байна — зөв үнийг оруулна уу" }, { status: 400 })
+      if (price !== null && parseRentPrice(price).status !== "valid") return Response.json({ error: tr(locale, "Үнэ 1–20 сая ₮-ийн гадна байна — зөв үнийг оруулна уу", "The price is outside 1–20M ₮ — enter the correct price") }, { status: 400 })
       const [updated] = await db.update(listings).set({ status: "active", cleanPrice: price }).where(eq(listings.id, id)).returning()
       return Response.json({ listing: updated })
     }
@@ -53,7 +55,7 @@ export async function POST(request: Request, context: RouteContext<"/api/admin/l
     case "split": {
       if (listing.flatId === null) return Response.json({ error: "Listing has no flat" }, { status: 400 })
       const [{ count }] = await db.select({ count: sql<number>`count(*)::int` }).from(listings).where(eq(listings.flatId, listing.flatId))
-      if (count < 2) return Response.json({ error: "Энэ байранд ганц зар байна" }, { status: 400 })
+      if (count < 2) return Response.json({ error: tr(locale, "Энэ байранд ганц зар байна", "This flat has only one listing") }, { status: 400 })
       const [flat] = await db.select().from(flats).where(eq(flats.id, listing.flatId)).limit(1)
       const newFlatId = await db.transaction(async (tx) => {
         const [created] = await tx.insert(flats).values({

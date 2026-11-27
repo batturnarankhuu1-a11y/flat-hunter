@@ -2,6 +2,7 @@ import "server-only"
 import type { Flat } from "@/components/types"
 import { getPricedRentListings, getRentalFlatRows } from "@/lib/db"
 import { computeFairPrices, type FairPriceResult } from "@/lib/fair-price"
+import { intlLocale, tr, type Locale } from "@/lib/i18n"
 
 export const PLACEHOLDER_IMAGE = "/apartment-placeholder.svg"
 
@@ -19,11 +20,11 @@ export function parseId(value: string): number | null {
 }
 
 /** Accepts Date or the ISO string Postgres returns for raw `max(created_at)` aggregates. */
-export function formatPostedAt(value: Date | string | null): string {
+export function formatPostedAt(value: Date | string | null, locale: Locale = "mn"): string {
   const date = value === null ? null : new Date(value)
   return date && !Number.isNaN(date.getTime())
-    ? new Intl.DateTimeFormat("mn-MN", { dateStyle: "medium" }).format(date)
-    : "Огноо тодорхойгүй"
+    ? new Intl.DateTimeFormat(intlLocale(locale), { dateStyle: "medium", timeZone: "Asia/Ulaanbaatar" }).format(date)
+    : tr(locale, "Огноо тодорхойгүй", "Date unknown")
 }
 
 function toIso(value: Date | string | null): string | null {

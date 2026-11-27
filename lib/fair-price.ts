@@ -112,3 +112,17 @@ export const BADGE_LABELS: Record<FairPriceBadge, string> = {
   outlier: "Хэт доогуур үнэ",
   missing: "Үнэ тохиролцоно",
 }
+
+export const BADGE_LABELS_EN: Record<FairPriceBadge, string> = {
+  cheap: "Good price",
+  fair: "Fair price",
+  expensive: "High price",
+  not_enough_data: "Not enough data",
+  outlier: "Suspiciously low",
+  missing: "Price on request",
+}
+
+/** Badge label in the given language ("mn" by default). */
+export function badgeLabel(badge: FairPriceBadge, locale: "mn" | "en" = "mn"): string {
+  return locale === "en" ? BADGE_LABELS_EN[badge] : BADGE_LABELS[badge]
+}

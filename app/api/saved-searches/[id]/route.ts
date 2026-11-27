@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs/server"
+import { requestLocale, tr } from "@/lib/i18n"
 import { and, eq } from "drizzle-orm"
 import { savedSearches } from "@/db/schema"
 import { ALERT_MODES, type AlertMode } from "@/lib/alerts"
@@ -12,7 +13,7 @@ import { parseId } from "@/lib/flats"
  */
 export async function PATCH(request: Request, context: RouteContext<"/api/saved-searches/[id]">): Promise<Response> {
   const { userId } = await auth()
-  if (!userId) return Response.json({ error: "Нэвтэрнэ үү" }, { status: 401 })
+  if (!userId) return Response.json({ error: tr(requestLocale(request), "Нэвтэрнэ үү", "Please sign in") }, { status: 401 })
   const id = parseId((await context.params).id)
   if (id === null) return Response.json({ error: "Not found" }, { status: 404 })
 
@@ -28,7 +29,7 @@ export async function PATCH(request: Request, context: RouteContext<"/api/saved-
     changes.alertMode = body.alertMode as AlertMode
     if (changes.alertMode === "instant") {
       const status = await getPlanStatus(userId)
-      if (status.plan !== "pro") return Response.json({ error: "Шуурхай мэдэгдэл зөвхөн Pro эрхтэй.", needsPro: true }, { status: 402 })
+      if (status.plan !== "pro") return Response.json({ error: tr(requestLocale(request), "Шуурхай мэдэгдэл зөвхөн Pro эрхтэй.", "Instant alerts are a Pro feature."), needsPro: true }, { status: 402 })
       changes.isPaidAlert = true
     } else changes.isPaidAlert = false
   }
@@ -44,9 +45,9 @@ export async function PATCH(request: Request, context: RouteContext<"/api/saved-
 }
 
 /** DELETE /api/saved-searches/:id */
-export async function DELETE(_request: Request, context: RouteContext<"/api/saved-searches/[id]">): Promise<Response> {
+export async function DELETE(request: Request, context: RouteContext<"/api/saved-searches/[id]">): Promise<Response> {
   const { userId } = await auth()
-  if (!userId) return Response.json({ error: "Нэвтэрнэ үү" }, { status: 401 })
+  if (!userId) return Response.json({ error: tr(requestLocale(request), "Нэвтэрнэ үү", "Please sign in") }, { status: 401 })
   const id = parseId((await context.params).id)
   if (id === null) return Response.json({ error: "Not found" }, { status: 404 })
   await ensureSchema()

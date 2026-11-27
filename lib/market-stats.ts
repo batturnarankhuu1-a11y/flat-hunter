@@ -5,6 +5,8 @@
  *   - owner price check: a fair rent range for a district, room count and area
  * Input is active listings with a valid price and area, outliers already removed (spec §14).
  */
+import { districtName, roomsLabel } from "./i18n.ts"
+
 export interface MarketListing {
   id: number
   flatId: number | null
@@ -98,6 +100,8 @@ export interface PriceCheckResult {
   /** Which comparison group was used (the narrowest one with enough listings). */
   level: "district_rooms" | "district" | "city_rooms" | "city"
   label: string
+  /** Same group in English ("Khan-Uul, 2 rooms"). */
+  labelEn: string
   sampleSize: number
   perM2: { low: number; median: number; high: number }
   /** Monthly rent for the given area: 25th percentile – median – 75th percentile of ₮/m². */
@@ -110,11 +114,11 @@ const round10k = (value: number) => Math.round(value / 10_000) * 10_000
 
 /** Fair rent range for an owner's flat, from the narrowest group with ≥ 5 listings. */
 export function priceCheck(listings: MarketListing[], input: { district: string; rooms: number; area: number }): PriceCheckResult | null {
-  const levels: Array<{ level: PriceCheckResult["level"]; label: string; items: MarketListing[] }> = [
-    { level: "district_rooms", label: `${input.district}, ${input.rooms} өрөө`, items: listings.filter((item) => item.district === input.district && item.rooms === input.rooms) },
-    { level: "district", label: `${input.district}, бүх өрөө`, items: listings.filter((item) => item.district === input.district) },
-    { level: "city_rooms", label: `Улаанбаатар, ${input.rooms} өрөө`, items: listings.filter((item) => item.rooms === input.rooms) },
-    { level: "city", label: "Улаанбаатар, бүх байр", items: listings },
+  const levels: Array<{ level: PriceCheckResult["level"]; label: string; labelEn: string; items: MarketListing[] }> = [
+    { level: "district_rooms", label: `${input.district}, ${input.rooms} өрөө`, labelEn: `${districtName(input.district, "en")}, ${roomsLabel(input.rooms, "en")}`, items: listings.filter((item) => item.district === input.district && item.rooms === input.rooms) },
+    { level: "district", label: `${input.district}, бүх өрөө`, labelEn: `${districtName(input.district, "en")}, all rooms`, items: listings.filter((item) => item.district === input.district) },
+    { level: "city_rooms", label: `Улаанбаатар, ${input.rooms} өрөө`, labelEn: `Ulaanbaatar, ${roomsLabel(input.rooms, "en")}`, items: listings.filter((item) => item.rooms === input.rooms) },
+    { level: "city", label: "Улаанбаатар, бүх байр", labelEn: "Ulaanbaatar, all flats", items: listings },
   ]
   const chosen = levels.find((level) => level.items.length >= PRICE_CHECK_MIN_SAMPLE)
   if (!chosen) return null
@@ -123,6 +127,7 @@ export function priceCheck(listings: MarketListing[], input: { district: string;
   return {
     level: chosen.level,
     label: chosen.label,
+    labelEn: chosen.labelEn,
     sampleSize: chosen.items.length,
     perM2: { low: Math.round(low), median: Math.round(mid), high: Math.round(high) },
     rent: { low: round10k(low * input.area), median: round10k(mid * input.area), high: round10k(high * input.area) },

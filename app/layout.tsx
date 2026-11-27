@@ -5,6 +5,9 @@ import { Suspense } from 'react'
 import ProButton from '@/components/ProButton'
 import SiteNav from '@/components/SiteNav'
 import ChatWidget from '@/components/ChatWidget'
+import PreferenceToggles from '@/components/PreferenceToggles'
+import T from '@/components/T'
+import { PREFERENCES_SCRIPT } from '@/lib/i18n'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -18,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="mn" className="h-full antialiased">
+    // lang and data-theme are set from localStorage by the inline script before the first paint.
+    <html lang="mn" data-theme="light" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: PREFERENCES_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <ClerkProvider
           signInUrl="/sign-in"
@@ -27,13 +34,14 @@ export default function RootLayout({
             variables: {
               colorPrimary: "#059669",
               colorPrimaryForeground: "#ffffff",
-              colorBackground: "#ffffff",
-              colorInput: "#f8fafc",
-              colorInputForeground: "#102c27",
-              colorForeground: "#102c27",
-              colorMutedForeground: "#64748b",
-              colorNeutral: "#102c27",
-              colorBorder: "#e2e8f0",
+              // CSS variables from globals.css, so Clerk's cards and menus follow the dark mode switch.
+              colorBackground: "var(--clerk-background)",
+              colorInput: "var(--clerk-input)",
+              colorInputForeground: "var(--clerk-foreground)",
+              colorForeground: "var(--clerk-foreground)",
+              colorMutedForeground: "var(--clerk-muted)",
+              colorNeutral: "var(--clerk-foreground)",
+              colorBorder: "var(--clerk-border)",
               colorRing: "#059669",
               borderRadius: "0.875rem",
             },
@@ -59,14 +67,15 @@ export default function RootLayout({
             </Link>
             <div className="hidden min-w-0 flex-1 md:block"><Suspense><SiteNav /></Suspense></div>
             <div className="flex shrink-0 items-center gap-3 text-sm">
+            <PreferenceToggles />
             <Suspense>
               <Show when="signed-out">
                 <SignInButton>
-                  <button className="font-semibold text-slate-600 hover:text-slate-900">Нэвтрэх</button>
+                  <button className="font-semibold text-slate-600 hover:text-slate-900"><T mn="Нэвтрэх" en="Sign in" /></button>
                 </SignInButton>
                 <SignUpButton>
-                  <button className="h-10 rounded-lg bg-emerald-700 px-4 font-semibold text-white transition hover:bg-emerald-800">
-                    Бүртгүүлэх
+                  <button className="hidden h-10 rounded-lg bg-emerald-700 px-4 sm:block font-semibold text-white transition hover:bg-emerald-800">
+                    <T mn="Бүртгүүлэх" en="Sign up" />
                   </button>
                 </SignUpButton>
               </Show>
