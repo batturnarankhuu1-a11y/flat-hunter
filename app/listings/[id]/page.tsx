@@ -58,9 +58,16 @@ async function ListingDetail({ id }: { id: string }) {
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <span className="rounded-md bg-slate-900 px-2 py-0.5 text-xs font-bold text-white">Зар [{listing.id}]</span>
             <span className="text-sm font-semibold text-emerald-700">{listing.district} дүүрэг · Түрээс</span>
+            {listing.source === "user" && <span className="rounded-md bg-amber-500 px-2 py-0.5 text-xs font-bold text-white">★ Эзэмшигчийн зар</span>}
           </div>
           <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{listing.title}</h1>
           {listing.address && <p className="mt-2 text-sm text-slate-500">{listing.address}</p>}
+          {(listing.paymentTerms || listing.furnished !== null) && (
+            <div className="mt-3 flex flex-wrap gap-2 text-sm">
+              {listing.paymentTerms && <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-slate-700">Төлбөрийн нөхцөл: <b>{listing.paymentTerms}</b></span>}
+              {listing.furnished !== null && <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-slate-700">{listing.furnished ? "Тавилгатай" : "Тавилгагүй"}</span>}
+            </div>
+          )}
 
           {/* What Flat Hunter adds on top of the original ad */}
           <section aria-labelledby="analysis-heading" className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5">

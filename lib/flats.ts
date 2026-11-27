@@ -116,6 +116,7 @@ export async function loadRentalCatalogue(): Promise<RentalCatalogue> {
       previousPrice: cheapest?.previousPrice ?? null,
       priceChangedAt: cheapest?.priceChangedAt?.toISOString() ?? null,
       sourcesCount: row.sourcesCount - (outliersByFlat.get(row.id) ?? 0),
+      ownerListing: Boolean(row.ownerListing),
     }
   })
   return { flats, listingFairPrices: byListing, hiddenListingIds }

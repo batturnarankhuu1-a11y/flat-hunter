@@ -21,7 +21,7 @@ export default function SiteNav() {
   const links = [
     { href: "/market", label: "Зах зээл" },
     { href: "/price-check", label: "Үнэ шалгах" },
-    ...(isSignedIn ? [{ href: "/saved", label: "Хадгалсан" }] : []),
+    ...(isSignedIn ? [{ href: "/saved", label: "Хадгалсан" }, { href: "/my-listings", label: "Миний зарууд" }] : []),
     ...(isSignedIn && isAdmin ? [{ href: "/admin", label: "Админ" }] : []),
   ]
   return (
@@ -32,6 +32,8 @@ export default function SiteNav() {
           {link.label}
         </Link>
       ))}
+      <Link href="/post" aria-current={pathname.startsWith("/post") ? "page" : undefined}
+        className="ml-1 whitespace-nowrap rounded-lg bg-emerald-700 px-3 py-1.5 font-semibold text-white transition hover:bg-emerald-800">＋ Зар нэмэх</Link>
     </nav>
   )
 }

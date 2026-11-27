@@ -1,6 +1,6 @@
 import "server-only"
 import { auth, currentUser } from "@clerk/nextjs/server"
-import { and, asc, eq, inArray, sql } from "drizzle-orm"
+import { and, asc, desc, eq, inArray, sql } from "drizzle-orm"
 import { flats, listings } from "@/db/schema"
 import { ensureSchema, getDb } from "@/lib/db"
 
@@ -49,6 +49,14 @@ export async function getAdminListings(statuses: string[]) {
   return getDb().select(adminListingColumns).from(listings)
     .where(and(eq(listings.dealType, "rent"), inArray(listings.status, statuses)))
     .orderBy(asc(listings.status), asc(listings.id))
+}
+
+/** Newest listings posted by owners on Flat Hunter (source = user), any status. */
+export async function getOwnerListings(limit = 50) {
+  await ensureSchema()
+  return getDb().select(adminListingColumns).from(listings)
+    .where(and(eq(listings.dealType, "rent"), eq(listings.source, "user")))
+    .orderBy(desc(listings.createdAt)).limit(limit)
 }
 
 /** Listings by id (for the outlier list). */

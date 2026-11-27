@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, numeric, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, numeric, timestamp, boolean, customType } from "drizzle-orm/pg-core";
 
 export const flats = pgTable("flats", {
   id: serial("id").primaryKey(),
@@ -41,6 +41,21 @@ export const listings = pgTable("listings", {
   /** SHA-256 prefixes of the original ad's photo URLs — only for duplicate matching (FR-8), never displayed (N1). */
   photoRefs: text("photo_refs"),
   status: text("status").default("active"), // 'active' | 'needs_review' | 'inactive'
+  /** Clerk user who posted it (source = 'user', "Эзэмшигчийн зар"); null for scraped/imported ads. Never shown. */
+  ownerUserId: text("owner_user_id"),
+  paymentTerms: text("payment_terms"), // "3+1" — months paid up front + deposit
+  furnished: boolean("furnished"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+const bytea = customType<{ data: Buffer; driverData: Buffer }>({ dataType: () => "bytea" })
+
+/** Photos uploaded by owners (resized in the browser), served from /api/photos/:id — works on Vercel and locally. */
+export const userPhotos = pgTable("user_photos", {
+  id: serial("id").primaryKey(),
+  ownerUserId: text("owner_user_id").notNull(),
+  contentType: text("content_type").notNull(),
+  data: bytea("data").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

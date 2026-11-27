@@ -29,6 +29,8 @@ export type Flat = {
   previousPrice: number | null
   priceChangedAt: string | null
   sourcesCount: number
+  /** Posted by the owner on Flat Hunter ("Эзэмшигчийн зар"). */
+  ownerListing: boolean
 }
 
 export type FlatFilters = {
